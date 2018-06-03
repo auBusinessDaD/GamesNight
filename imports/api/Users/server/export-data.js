@@ -14,21 +14,21 @@ const generateZip = (zip) => {
   }
 };
 
-const addDocumentsToZip = (documents, zip) => {
+const addGamesToZip = (games, zip) => {
   try {
-    documents.forEach((document) => {
-      zip.file(`${document.title}.txt`, `${document.title}\n\n${document.body}`);
+    games.forEach((game) => {
+      zip.file(`${game.title}.txt`, `${game.title}\n\n${game.body}`);
     });
   } catch (exception) {
-    throw new Error(`[exportData.addDocumentsToZip] ${exception.message}`);
+    throw new Error(`[exportData.addGamesToZip] ${exception.message}`);
   }
 };
 
-const getDocuments = (userId) => {
+const getGames = (userId) => {
   try {
-    return Documents.find({ owner: userId }).fetch();
+    return Games.find({ owner: userId }).fetch();
   } catch (exception) {
-    throw new Error(`[exportData.getDocuments] ${exception.message}`);
+    throw new Error(`[exportData.getGames] ${exception.message}`);
   }
 };
 
@@ -36,8 +36,8 @@ const exportData = ({ userId }, promise) => {
   try {
     action = promise;
     const zip = new JSZip();
-    const documents = getDocuments(userId);
-    addDocumentsToZip(documents, zip);
+    const games = getGames(userId);
+    addGamesToZip(games, zip);
     generateZip(zip);
   } catch (exception) {
     action.reject(exception.message);
