@@ -38,7 +38,7 @@ Meteor.methods({
 
     try {
       const gameId = gam._id;
-      const gamToUpdate = Game.findOne(gameId, { fields: { owner: 1 } });
+      const gamToUpdate = Games.findOne(gameId, { fields: { owner: 1 } });
 
       if (gamToUpdate.owner === this.userId) {
         Games.update(gameId, { $set: gam });
