@@ -76,14 +76,10 @@ const Index = () => (
   <StyledIndex>
     <img
       src="https://s3-us-west-2.amazonaws.com/cleverbeagle-assets/graphics/email-icon.png"
-      alt="Clever Beagle"
+      alt="GamesNight"
     />
-    <h1>Pup</h1>
-    <p>A boilerplate for products.</p>
-    <div>
-      <Button href="http://cleverbeagle.com/pup">Read the Docs</Button>
-      <Button href="https://github.com/cleverbeagle/pup"><i className="fa fa-star" /> Star on GitHub</Button>
-    </div>
+    <h1>GamesNight</h1>
+    <p>A modern take on exploring tabletop gaming.</p>
     <footer>
       <p>Want to ensure that your product sees the light of day? <a href="https://cleverbeagle.com?utm_source=pup&utm_medium=app&utm_campaign=oss">Work with Clever Beagle</a>.</p>
     </footer>

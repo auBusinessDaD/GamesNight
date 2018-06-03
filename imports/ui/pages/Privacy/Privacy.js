@@ -29,8 +29,8 @@ We are committed to conducting our business in accordance with these principles 
 const Privacy = () => (
   <div className="Privacy">
     <Page
-      title="Privacy Policy"
-      subtitle="Last updated May 29th, 2017"
+      title="Our Privacy Policy"
+      subtitle="Last updated May 4th, 2018"
       content={content}
     />
   </div>

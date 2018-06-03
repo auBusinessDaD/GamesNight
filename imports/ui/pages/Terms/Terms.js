@@ -33,8 +33,8 @@ These terms and conditions are governed by and construed in accordance with the 
 const Terms = () => (
   <div className="Terms">
     <Page
-      title="Terms of Service"
-      subtitle="Last updated May 29th, 2017"
+      title="Our Terms of Service"
+      subtitle="Last updated May 4th, 2018"
       content={content}
     />
   </div>

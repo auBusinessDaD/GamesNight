@@ -61,8 +61,8 @@ const Footer = () => (
     <Grid>
       <p className="pull-left">&copy; {copyrightYear()} {productName}</p>
       <ul className="pull-right">
-        <li><Link to="/terms">Terms<span className="hidden-xs"> of Service</span></Link></li>
-        <li><Link to="/privacy">Privacy<span className="hidden-xs"> Policy</span></Link></li>
+        <li><Link to="/terms">Our Terms<span className="hidden-xs"> of Service</span></Link></li>
+        <li><Link to="/privacy">Our Privacy<span className="hidden-xs"> Policy</span></Link></li>
       </ul>
     </Grid>
   </StyledFooter>

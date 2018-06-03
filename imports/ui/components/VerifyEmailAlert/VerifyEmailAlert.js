@@ -12,7 +12,7 @@ const StyledVerifyEmailAlert = styled.div`
     border-top: none;
     border-bottom: 1px solid #e7e7e7;
     background: #fff;
-    color: var(--gray-dark);
+    color: $gray-dark;
     border-radius: 0;
 
     p {
@@ -39,13 +39,12 @@ const VerifyEmailAlert = ({ userId, emailVerified, emailAddress }) => (
   userId && !emailVerified ? (
     <StyledVerifyEmailAlert>
       <Alert className="verify-email text-center">
-        <p>Hey friend! Can you <strong>verify your email address</strong> ({emailAddress}) for us?
+        <p>Hey friend! Can you <strong>verify your email address</strong> ({emailAddress}) for us? Want us to
           <Button
             bsStyle="link"
             onClick={() => handleResendVerificationEmail(emailAddress)}
             href="#"
-          >
-            Re-send verification email
+          >re-send you a verification email
           </Button>
         </p>
       </Alert>

@@ -13,10 +13,14 @@ import Navigation from '../../components/Navigation/Navigation';
 import Authenticated from '../../components/Authenticated/Authenticated';
 import Public from '../../components/Public/Public';
 import Index from '../../pages/Index/Index';
-import Documents from '../../pages/Documents/Documents';
-import NewDocument from '../../pages/NewDocument/NewDocument';
-import ViewDocument from '../../pages/ViewDocument/ViewDocument';
-import EditDocument from '../../pages/EditDocument/EditDocument';
+import Games from '../../pages/Games/Games';
+import ViewGame from '../../pages/Games/ViewGame';
+import ManageGames from '../../pages/Games/Manage/Manage';
+import ManageGame from '../../pages/Games/Manage/ManageGame';
+import NewGame from '../../pages/Games/Manage/NewGame';
+import EditGame from '../../pages/Games/Manage/EditGame';
+import MyGames from '../../pages/Mine/Mine';
+import WishGames from '../../pages/Wishlist/Wishlist';
 import Signup from '../../pages/Signup/Signup';
 import Login from '../../pages/Login/Login';
 import Logout from '../../pages/Logout/Logout';
@@ -28,7 +32,6 @@ import NotFound from '../../pages/NotFound/NotFound';
 import Footer from '../../components/Footer/Footer';
 import Terms from '../../pages/Terms/Terms';
 import Privacy from '../../pages/Privacy/Privacy';
-import ExamplePage from '../../pages/ExamplePage/ExamplePage';
 import VerifyEmailAlert from '../../components/VerifyEmailAlert/VerifyEmailAlert';
 import { onLogin, onLogout } from '../../../modules/redux/actions';
 
@@ -96,10 +99,14 @@ class App extends React.Component {
         <Grid>
           <Switch>
             <Route exact name="index" path="/" component={Index} />
-            <Authenticated exact path="/documents" component={Documents} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
-            <Authenticated exact path="/documents/new" component={NewDocument} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
-            <Route exact path="/documents/:_id" component={ViewDocument} />
-            <Authenticated exact path="/documents/:_id/edit" component={EditDocument} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
+            <Authenticated exact path="/games" component={Games} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
+            <Route exact path="/games/:_id" component={ViewGame} />
+            <Authenticated exact path="/mine" component={MyGames} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
+            <Authenticated exact path="/wishlist" component={WishGames} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
+            <Authenticated exact path="/game/manage" component={ManageGames} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
+            <Authenticated exact path="/game/manage/new" component={NewGame} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
+            <Route exact path="/game/manage/:_id" component={ManageGame} />
+            <Authenticated exact path="/game/manage/:_id/edit" component={EditGame} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
             <Authenticated exact path="/profile" component={Profile} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
             <Public path="/signup" component={Signup} {...props} {...state} />
             <Public path="/login" component={Login} {...props} {...state} />
@@ -109,7 +116,6 @@ class App extends React.Component {
             <Route name="reset-password" path="/reset-password/:token" component={ResetPassword} />
             <Route name="terms" path="/terms" component={Terms} />
             <Route name="privacy" path="/privacy" component={Privacy} />
-            <Route name="examplePage" path="/example-page" component={ExamplePage} />
             <Route component={NotFound} />
           </Switch>
         </Grid>
