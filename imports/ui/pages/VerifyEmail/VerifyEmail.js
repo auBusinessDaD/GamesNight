@@ -24,7 +24,7 @@ class VerifyEmail extends React.Component {
             if (errorMethod) {
               Bert.alert(errorMethod.reason, 'danger');
             } else {
-              history.push('/documents');
+              history.push('/games');
             }
           });
         }, 1500);
