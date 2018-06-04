@@ -48,7 +48,7 @@ class GameEditor extends React.Component {
         const confirmation = existingGame ? 'Game updated!' : 'Game added!';
         this.form.reset();
         Bert.alert(confirmation, 'success');
-        history.push(`/games/${gameId}`);
+        history.push(`/game/manage/${gameId}`);
       }
     });
   }
