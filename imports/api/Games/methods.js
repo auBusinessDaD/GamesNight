@@ -50,6 +50,48 @@ Meteor.methods({
       handleMethodException(exception);
     }
   },
+  'games.addOwn': function gamesAddOwn(gam) {
+    check(gam, {
+      _id: String,
+      title: String,
+      description: String,
+    });
+
+    try {
+      const gameId = gam._id;
+      const gamToUpdate = Games.findOne(gameId, { fields: { owns: 1 } });
+
+      if (gamToUpdate.owner === this.userId) {
+        Games.update(gameId, { $set: gam });
+        return gameId; // Return _id so we can redirect to document after update.
+      }
+
+      throw new Meteor.Error('403', 'Apologies - you eager beaver - but you\'re not allowed to edit this game.');
+    } catch (exception) {
+      handleMethodException(exception);
+    }
+  },
+  'games.removeOwn': function gamesRemoveOwn(gam) {
+    check(gam, {
+      _id: String,
+      title: String,
+      description: String,
+    });
+
+    try {
+      const gameId = gam._id;
+      const gamToUpdate = Games.findOne(gameId, { fields: { owns: 1 } });
+
+      if (gamToUpdate.owner === this.userId) {
+        Games.update(gameId, { $set: gam });
+        return gameId; // Return _id so we can redirect to document after update.
+      }
+
+      throw new Meteor.Error('403', 'Apologies - you eager beaver - but you\'re not allowed to edit this game.');
+    } catch (exception) {
+      handleMethodException(exception);
+    }
+  },
   //need another method for generic users to 'update' wishlist, thriftied, owned, loaned, wantToPlay, havePlayed, wouldPlayAgain, wouldRecommend, wouldBuy
   'games.remove': function gamesRemove(gameId) {
     check(gameId, String);
