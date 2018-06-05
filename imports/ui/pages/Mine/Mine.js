@@ -17,8 +17,8 @@ const StyledGames = styled.div`
   }
 `;
 
-const handleRemove = (gameId) => {
-  if (confirm('Are you sure? This is permanent!')) {
+const handleRemove = (gameId) => {//should just remove thei name from the "Owns" array of the game - not delete the game itself
+  if (confirm('Are you sure? This will remove this game from your shelf!')) {
     Meteor.call('games.remove', gameId, (error) => {
       if (error) {
         Bert.alert(error.reason, 'danger');
@@ -34,7 +34,7 @@ const Games = ({
 }) => (!loading ? (
   <StyledGames>
     <div className="page-header clearfix">
-      <h4 className="pull-left">Games</h4>
+      <h4 className="pull-left">My Games</h4>
     </div>
     {games.length ?
       <Table responsive>
@@ -100,6 +100,6 @@ export default withTracker(() => {
   const subscription = Meteor.subscribe('games');
   return {
     loading: !subscription.ready(),
-    games: GamesCollection.find().fetch(),
+    games: GamesCollection.find({ owns: Meteor.userId() }).fetch(),
   };
 })(Games);
