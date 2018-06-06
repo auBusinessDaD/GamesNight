@@ -57,9 +57,9 @@ Meteor.methods({
 
     try {
       const gameId = gam._id;
-      const gamToUpdate = Games.findOne(gameId);
+      const gamToAddField = Games.findOne({ _id: gameId });
 
-      if (gamToUpdate.owns !== this.userId) {//should this be not equal to !== or should it be does not contain?
+      if (gamToAddField.owns !== this.userId) {//should this be not equal to !== or should it be does not contain?
         Games.update(gameId, { $set: { owns: this.userId } });//don't want to set gam to new value, just add the person to the owns field to the array - not replace previous
         return gameId; // Return _id so we can redirect to game after update.
       }
@@ -76,9 +76,9 @@ Meteor.methods({
 
     try {
       const gameId = gam._id;
-      const gamToUpdate = Games.findOne(gameId, { fields: { owns: 1 } });
+      const gamToRemoveField = Games.findOne(gameId, { fields: { owns: 1 } });
 
-      if (gamToUpdate.ownes == this.userId) {//should this be equal to == or should it be contains?
+      if (gamToRemoveField.ownes == this.userId) {//should this be equal to == or should it be contains?
         Games.update(gameId, { $set: { owns: this.userId } });//don't want to set gam to new value, just remove the person from the owns field
         return gameId; // Return _id so we can redirect to game after update.
       }
