@@ -88,7 +88,6 @@ Meteor.methods({
       handleMethodException(exception);
     }
   },
-  //need methods for generic users to add or remove wishlist, thriftied, loaned, wantToPlay, havePlayed, wouldPlayAgain, wouldRecommend, wouldBuy
   'games.remove': function gamesRemove(gameId) {
     check(gameId, String);
 
