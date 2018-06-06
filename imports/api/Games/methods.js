@@ -50,7 +50,7 @@ Meteor.methods({
       handleMethodException(exception);
     }
   },
-  'games.addField': function gamesAddField( gam, field ) {
+  'games.addField': function gamesAddField( gam ) {
     check(gam, {
       _id: String,
     });
@@ -69,7 +69,7 @@ Meteor.methods({
       handleMethodException(exception);
     }
   },
-  'games.removeField': function gamesRemoveField( gam, field ) {
+  'games.removeField': function gamesRemoveField( gam ) {
     check(gam, {
       _id: String,
     });
@@ -79,7 +79,7 @@ Meteor.methods({
       const gamToUpdate = Games.findOne(gameId, { fields: { owns: 1 } });
 
       if (gamToUpdate.ownes == this.userId) {//should this be equal to == or should it be contains?
-        Games.update(gameId, { $set: gam });//don't want to set gam to new value, just remove the person from the owns field
+        Games.update(gameId, { $set: { owns: this.userId } });//don't want to set gam to new value, just remove the person from the owns field
         return gameId; // Return _id so we can redirect to game after update.
       }
 
