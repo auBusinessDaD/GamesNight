@@ -106,7 +106,7 @@ const Games = ({
                   I own this game - change if I already own to - remove from my shelf
                 </Button>
               </td>
-              <td>/
+              <td>
                 <Button
                   bsStyle="primary"
                   onClick={() => handleAddWishlist(_id)}
