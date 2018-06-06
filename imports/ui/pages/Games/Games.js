@@ -17,13 +17,45 @@ const StyledGames = styled.div`
   }
 `;
 
-const handleRemove = (gameId) => {
-  if (confirm('Are you sure? This is permanent!')) {
-    Meteor.call('games.remove', gameId, (error) => {
+const handleAddOwn = (gameId) => {
+  Meteor.call('games.removeField', gameId, (error) => {//how do i pass through multiple parameters? need to pass through - gameId, 'owns' - to denote field it is working on
+    if (error) {
+      Bert.alert(error.reason, 'danger');
+    } else {
+      Bert.alert('Game added to your shelf!', 'success');
+    }
+  });
+};
+
+const handleRemoveOwn = (gameId) => {
+  if (confirm('Are you sure? This will remove this game from your shelf!')) {
+    Meteor.call('games.removeField', gameId, (error) => {//how do i pass through multiple parameters? need to pass through - gameId, 'owns' - to denote field it is working on
       if (error) {
         Bert.alert(error.reason, 'danger');
       } else {
-        Bert.alert('Game deleted!', 'success');
+        Bert.alert('Game added to your wishlist!', 'success');
+      }
+    });
+  }
+};
+
+const handleAddWishlist = (gameId) => {
+  Meteor.call('games.removeField', gameId, (error) => {//how do i pass through multiple parameters? need to pass through - gameId, 'owns' - to denote field it is working on
+    if (error) {
+      Bert.alert(error.reason, 'danger');
+    } else {
+      Bert.alert('Game removed from your shelf!', 'success');
+    }
+  });
+};
+
+const handleRemoveWishlist = (gameId) => {
+  if (confirm('Are you sure? This will remove this game from your shelf!')) {
+    Meteor.call('games.removeField', gameId, (error) => {//how do i pass through multiple parameters? need to pass through - gameId, 'owns' - to denote field it is working on
+      if (error) {
+        Bert.alert(error.reason, 'danger');
+      } else {
+        Bert.alert('Game removed from your wishlist!', 'success');
       }
     });
   }
@@ -44,6 +76,8 @@ const Games = ({
             <th>Last Updated</th>
             <th>Created</th>
             <th />
+            <th />
+            <th />
           </tr>
         </thead>
         <tbody>
@@ -61,6 +95,24 @@ const Games = ({
                   block
                 >
                   View
+                </Button>
+              </td>
+              <td>//toggle button if owned already to danger - handleRemoveOwn - Remove from my shelf
+                <Button
+                  bsStyle="primary"
+                  onClick={() => handleAddOwn(_id)}
+                  block
+                >
+                  I own this game
+                </Button>
+              </td>
+              <td>//toggle button if in wishlist already to danger - handleRemoveWishlist - Remove from wishlist
+                <Button
+                  bsStyle="primary"
+                  onClick={() => handleAddWishlist(_id)}
+                  block
+                >
+                  Add to wishlist
                 </Button>
               </td>
             </tr>
