@@ -57,7 +57,7 @@ Meteor.methods({
 
     try {
       const gameId = gam._id;
-      const gamToUpdate = Games.findOne(gameId, { fields: { owns: 1 } });
+      const gamToUpdate = Games.findOne(gameId);
 
       if (gamToUpdate.owns !== this.userId) {//should this be not equal to !== or should it be does not contain?
         Games.update(gameId, { $set: { owns: this.userId } });//don't want to set gam to new value, just add the person to the owns field to the array - not replace previous
