@@ -97,7 +97,7 @@ const Games = ({
                   View
                 </Button>
               </td>
-              <td>//toggle button if owned already to danger - handleRemoveOwn - Remove from my shelf
+              <td><!--toggle button if owned already to danger - handleRemoveOwn - Remove from my shelf-->
                 <Button
                   bsStyle="primary"
                   onClick={() => handleAddOwn(_id)}
@@ -106,7 +106,7 @@ const Games = ({
                   I own this game
                 </Button>
               </td>
-              <td>//toggle button if in wishlist already to danger - handleRemoveWishlist - Remove from wishlist
+              <td>/<!--toggle button if in wishlist already to danger - handleRemoveWishlist - Remove from wishlist-->
                 <Button
                   bsStyle="primary"
                   onClick={() => handleAddWishlist(_id)}
