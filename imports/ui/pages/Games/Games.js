@@ -17,7 +17,7 @@ const StyledGames = styled.div`
   }
 `;
 
-const handleAddOwn = (gameId) => {
+const handleAddOwn = (gameId) => {//should we remove from wishlist is they have marked as owned?
   Meteor.call('games.removeField', gameId, (error) => {//how do i pass through multiple parameters? need to pass through - gameId, 'owns' - to denote field it is working on
     if (error) {
       Bert.alert(error.reason, 'danger');
@@ -97,22 +97,22 @@ const Games = ({
                   View
                 </Button>
               </td>
-              <td><!--toggle button if owned already to danger - handleRemoveOwn - Remove from my shelf-->
+              <td>
                 <Button
                   bsStyle="primary"
                   onClick={() => handleAddOwn(_id)}
                   block
                 >
-                  I own this game
+                  I own this game - change if I already own to - remove from my shelf
                 </Button>
               </td>
-              <td>/<!--toggle button if in wishlist already to danger - handleRemoveWishlist - Remove from wishlist-->
+              <td>/
                 <Button
                   bsStyle="primary"
                   onClick={() => handleAddWishlist(_id)}
                   block
                 >
-                  Add to wishlist
+                  Add to wishlist - change if it is on my wishlist to - remove from wishlist
                 </Button>
               </td>
             </tr>
