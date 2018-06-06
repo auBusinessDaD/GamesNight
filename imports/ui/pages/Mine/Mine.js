@@ -17,13 +17,13 @@ const StyledGames = styled.div`
   }
 `;
 
-const handleRemove = (gameId) => {//should just remove thei name from the "Owns" array of the game - not delete the game itself
+const handleRemoveOwn = (gameId) => {
   if (confirm('Are you sure? This will remove this game from your shelf!')) {
-    Meteor.call('games.remove', gameId, (error) => {
+    Meteor.call('games.removeField', gameId, (error) => {//how do i pass through multiple parameters? need to pass through - gameId, 'owns' - to denote field it is working on
       if (error) {
         Bert.alert(error.reason, 'danger');
       } else {
-        Bert.alert('Game deleted!', 'success');
+        Bert.alert('Game removed!', 'success');
       }
     });
   }
@@ -67,7 +67,7 @@ const Games = ({
               <td>
                 <Button
                   bsStyle="danger"
-                  onClick={() => handleRemove(_id)}
+                  onClick={() => handleRemoveOwn(_id)}
                   block
                 >
                   Remove
@@ -82,8 +82,8 @@ const Games = ({
         subtitle="Add some games to your collection below."
         action={{
           style: 'success',
-          onClick: () => history.push(`${match.url}/games`),
-          label: 'Find Your Game Here',
+          onClick: () => history.push(`/games`),
+          label: 'Find Some Games Here',
         }}
       />}
   </StyledGames>
