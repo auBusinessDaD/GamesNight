@@ -18,7 +18,8 @@ const StyledGames = styled.div`
 `;
 
 const handleAddOwn = (gameId) => {//should we remove from wishlist is they have marked as owned?
-  Meteor.call('games.addField', gameId, (error) => {//how do i pass through multiple parameters? need to pass through - gameId, 'owns' - to denote field it is working on
+  let addOwn = { _id: gameId, field: "owns" };
+  Meteor.call('games.addField', addOwn, (error) => {//how do i pass through multiple parameters? need to pass through - gameId, 'owns' - to denote field it is working on
     if (error) {
       Bert.alert(error.reason, 'danger');
     } else {
