@@ -53,6 +53,7 @@ Meteor.methods({
   'games.addField': function gamesAddField( gam ) {
     check(gam, {
       _id: String,
+      field: String,
     });
 
     try {
