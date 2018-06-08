@@ -19,7 +19,8 @@ const StyledGames = styled.div`
 
 const handleRemoveOwn = (gameId) => {
   if (confirm('Are you sure? This will remove this game from your shelf!')) {
-    Meteor.call('games.removeField', gameId, (error) => {//how do i pass through multiple parameters? need to pass through - gameId, 'owns' - to denote field it is working on
+    let removeOwn = { _id: gameId, field: "owns" };
+    Meteor.call('games.removeFieldArray', removeOwn, (error) => {
       if (error) {
         Bert.alert(error.reason, 'danger');
       } else {
