@@ -70,9 +70,9 @@ Meteor.methods({
     try {
       const gameId = gam._id;
       const gamToAddField = Games.findOne({ _id: gameId });
-      let updatedArray = gamToAddField.owns.push( this.userId );//need to update "owns" with the gam.field value
+      var updatedArray = gamToAddField.owns.push( this.userId );//need to update "owns" with the gam.field value
       
-      Games.update(gameId, { $set: { [gam.field]: this.userId } });//need to update "owns" with the gam.field value
+      Games.update(gameId, { $set: { [gam.field]: updatedArray } });
       return gameId;
 
       throw new Meteor.Error('403', 'Apologies - we had some difficulties with your request.');
@@ -89,9 +89,9 @@ Meteor.methods({
     try {
       const gameId = gam._id;
       const gamToRemoveField = Games.findOne({ _id: gameId });
-      let updatedArray = gamToRemoveField.owns.arrayRemove( this.userId );//need to update "owns" with the gam.field value
+      var updatedArray = gamToRemoveField.owns.arrayRemove( this.userId );//need to update "owns" with the gam.field value
       
-      Games.update(gameId, { $set: { owns: updatedArray } });//need to update "owns" with the gam.field value
+      Games.update(gameId, { $set: { [gam.field]: updatedArray } });
       return gameId;
 
       throw new Meteor.Error('403', 'Apologies - we had some difficulties with your request.');
