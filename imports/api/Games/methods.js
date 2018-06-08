@@ -6,6 +6,17 @@ import Games from './Games';
 import handleMethodException from '../../modules/handle-method-exception';
 import rateLimit from '../../modules/rate-limit';
 
+Array.prototype.arrayRemove = function() {
+    var what, a = arguments, L = a.length, ax;
+    while (L && this.length) {
+        what = a[--L];
+        while ((ax = this.indexOf(what)) !== -1) {
+            this.splice(ax, 1);
+        }
+    }
+    return this;
+};
+
 Meteor.methods({
   'games.findOne': function gamesFindOne(gameId) {
     check(gameId, Match.OneOf(String, undefined));
@@ -24,7 +35,7 @@ Meteor.methods({
     });
 
     try {
-      return Games.insert({ owner: this.userId, owns: this.userId, ...gam });//this is auto adding the owner to owning this games
+      return Games.insert({ owner: this.userId });
     } catch (exception) {
       handleMethodException(exception);
     }
@@ -42,7 +53,7 @@ Meteor.methods({
 
       if (gamToUpdate.owner === this.userId) {
         Games.update(gameId, { $set: gam });
-        return gameId; // Return _id so we can redirect to game after update.
+        return gameId;
       }
 
       throw new Meteor.Error('403', 'Apologies - you eager beaver - but you\'re not allowed to edit this game.');
@@ -50,7 +61,7 @@ Meteor.methods({
       handleMethodException(exception);
     }
   },
-  'games.addField': function gamesAddField( gam ) {
+  'games.addFieldArray': function gamesAddField( gam ) {
     check(gam, {
       _id: String,
       field: String,
@@ -59,30 +70,29 @@ Meteor.methods({
     try {
       const gameId = gam._id;
       const gamToAddField = Games.findOne({ _id: gameId });
-
-      if (gamToAddField.owns !== this.userId) {//should this be not equal to !== or should it be does not contain?
-        Games.update(gameId, { $set: { owns: this.userId } });//don't want to set gam to new value, just add the person to the owns field to the array - not replace previous
-        return gameId; // Return _id so we can redirect to game after update.
-      }
+      let updatedArray = gamToAddField.owns.push( this.userId );//need to update "owns" with the gam.field value
+      
+      Games.update(gameId, { $set: { owns: updatedArray } });//need to update "owns" with the gam.field value
+      return gameId;
 
       throw new Meteor.Error('403', 'Apologies - we had some difficulties with your request.');
     } catch (exception) {
       handleMethodException(exception);
     }
   },
-  'games.removeField': function gamesRemoveField( gam ) {
+  'games.removeFieldArray': function gamesRemoveField( gam ) {
     check(gam, {
       _id: String,
+      field: String,
     });
 
     try {
       const gameId = gam._id;
-      const gamToRemoveField = Games.findOne(gameId, { fields: { owns: 1 } });
-
-      if (gamToRemoveField.ownes == this.userId) {//should this be equal to == or should it be contains?
-        Games.update(gameId, { $set: { owns: this.userId } });//don't want to set gam to new value, just remove the person from the owns field
-        return gameId; // Return _id so we can redirect to game after update.
-      }
+      const gamToRemoveField = Games.findOne({ _id: gameId });
+      let updatedArray = gamToAddField.owns.arrayRemove( this.userId );//need to update "owns" with the gam.field value
+      
+      Games.update(gameId, { $set: { owns: updatedArray } });//need to update "owns" with the gam.field value
+      return gameId;
 
       throw new Meteor.Error('403', 'Apologies - we had some difficulties with your request.');
     } catch (exception) {
