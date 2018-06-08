@@ -17,9 +17,9 @@ const StyledGames = styled.div`
   }
 `;
 
-const handleAddOwn = (gameId) => {//should we remove from wishlist is they have marked as owned?
+const handleAddOwn = (gameId) => {//should we remove from wishlist if they have marked as owned?
   let addOwn = { _id: gameId, field: "owns" };
-  Meteor.call('games.addField', addOwn, (error) => {//how do i pass through multiple parameters? need to pass through - gameId, 'owns' - to denote field it is working on
+  Meteor.call('games.addFieldArray', addOwn, (error) => {
     if (error) {
       Bert.alert(error.reason, 'danger');
     } else {
@@ -28,31 +28,34 @@ const handleAddOwn = (gameId) => {//should we remove from wishlist is they have 
   });
 };
 
+const handleAddWishlist = (gameId) => {
+  let addOwn = { _id: gameId, field: "wishlist" };
+  Meteor.call('games.addFieldArray', gameId, (error) => {
+    if (error) {
+      Bert.alert(error.reason, 'danger');
+    } else {
+      Bert.alert('Game added to your wishlist!', 'success');
+    }
+  });
+};
+
 const handleRemoveOwn = (gameId) => {
   if (confirm('Are you sure? This will remove this game from your shelf!')) {
-    Meteor.call('games.removeField', gameId, (error) => {//how do i pass through multiple parameters? need to pass through - gameId, 'owns' - to denote field it is working on
+    let addOwn = { _id: gameId, field: "owns" };
+    Meteor.call('games.removeFieldArray', gameId, (error) => {
       if (error) {
         Bert.alert(error.reason, 'danger');
       } else {
-        Bert.alert('Game added to your wishlist!', 'success');
+        Bert.alert('Game removed from your shelf!', 'success');
       }
     });
   }
 };
 
-const handleAddWishlist = (gameId) => {
-  Meteor.call('games.addField', gameId, (error) => {//how do i pass through multiple parameters? need to pass through - gameId, 'owns' - to denote field it is working on
-    if (error) {
-      Bert.alert(error.reason, 'danger');
-    } else {
-      Bert.alert('Game removed from your shelf!', 'success');
-    }
-  });
-};
-
 const handleRemoveWishlist = (gameId) => {
+  let addOwn = { _id: gameId, field: "wishlist" };
   if (confirm('Are you sure? This will remove this game from your shelf!')) {
-    Meteor.call('games.removeField', gameId, (error) => {//how do i pass through multiple parameters? need to pass through - gameId, 'owns' - to denote field it is working on
+    Meteor.call('games.removeFieldArray', gameId, (error) => {
       if (error) {
         Bert.alert(error.reason, 'danger');
       } else {
