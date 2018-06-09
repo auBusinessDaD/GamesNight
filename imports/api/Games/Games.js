@@ -103,7 +103,7 @@ Games.schema = new SimpleSchema({
     label: 'Who were the designers of this game.',
     optional: true,
   },
-  artist: {
+  artists: {
     type: String,
     label: 'Who were the artists on this game.',
     optional: true,
