@@ -37,7 +37,7 @@ Meteor.methods({
     });
 
     try {
-      return Games.insert({ owner: this.userId, altTitle: gam.altTitle, rrp: gam.rrp });
+      return Games.insert({ owner: this.userId, title: gam.title, description: gam.description, altTitle: gam.altTitle, rrp: gam.rrp });
     } catch (exception) {
       handleMethodException(exception);
     }
