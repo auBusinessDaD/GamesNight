@@ -107,7 +107,7 @@ const Games = ({
                   onClick={() => handleAddWish(_id)}
                   block
                 >
-                  Add to wishlist
+                  Add to My Wishlist
                 </Button>
               </td>
               <td>
@@ -116,7 +116,7 @@ const Games = ({
                   onClick={() => handleAddOwn(_id)}
                   block
                 >
-                  I own this game
+                  Add to My Shelf
                 </Button>
               </td>
             </tr>
