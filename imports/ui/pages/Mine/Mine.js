@@ -42,18 +42,16 @@ const Games = ({
         <thead>
           <tr>
             <th>Title</th>
-            <th>RRP</th>
             <th />
             <th />
           </tr>
         </thead>
         <tbody>
           {games.map(({
-            _id, title, rrp,
+            _id, title,
           }) => (
             <tr key={_id}>
               <td>{title}</td>
-              <td>{rrp}</td>
               <td>
                 <Button
                   bsStyle="primary"
