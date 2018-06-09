@@ -83,7 +83,7 @@ Games.schema = new SimpleSchema({
     label: 'The year this game/edition was published.',
     optional: true,
   },
-    players: {
+  players: {
     type: String,
     label: 'The number of players that play this game.',
     optional: true,
