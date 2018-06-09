@@ -14,7 +14,7 @@ const AuthenticatedNavigation = ({ name, history }) => (
         <NavItem eventKey={3} href="/wishlist">My Wishlist</NavItem>
       </LinkContainer>
       <LinkContainer to="/mine">
-        <NavItem eventKey={2} href="/mine">My Games</NavItem>
+        <NavItem eventKey={2} href="/mine">My Games Shelf</NavItem>
       </LinkContainer>
       <LinkContainer to="/game/manage">
         <NavItem eventKey={4} href="/game/manage">Manage Games</NavItem>
