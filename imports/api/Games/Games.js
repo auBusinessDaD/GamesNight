@@ -60,6 +60,16 @@ Games.schema = new SimpleSchema({
   'owns.$': {
     type: String,
   },
+  altTitle: {
+    type: String,
+    label: 'Alternate names for this games.',
+    optional: true,
+  },
+  rrp: {
+    type: String,
+    label: 'Alternate names for this games.',
+    optional: true,
+  },
 });
 
 Games.attachSchema(Games.schema);
