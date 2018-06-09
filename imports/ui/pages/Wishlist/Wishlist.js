@@ -17,8 +17,8 @@ const StyledGames = styled.div`
   }
 `;
 
-const handleRemoveOwn = (gameId) => {
-  if (confirm('Are you sure? This will remove this game from your shelf!')) {
+const handleRemoveWish = (gameId) => {
+  if (confirm('Are you sure? This will remove this game from your wishlist!')) {
     let removeOwn = { _id: gameId, field: "wishlist" };
     Meteor.call('games.removeFieldArray', removeOwn, (error) => {
       if (error) {
@@ -68,7 +68,7 @@ const Games = ({
               <td>
                 <Button
                   bsStyle="danger"
-                  onClick={() => handleRemoveOwn(_id)}
+                  onClick={() => handleRemoveWish(_id)}
                   block
                 >
                   Remove from Wishlist
