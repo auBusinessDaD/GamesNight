@@ -17,13 +17,14 @@ const StyledGames = styled.div`
   }
 `;
 
-const handleRemove = (gameId) => {
-  if (confirm('Are you sure? This is permanent!')) {
-    Meteor.call('games.remove', gameId, (error) => {
+const handleRemoveOwn = (gameId) => {
+  if (confirm('Are you sure? This will remove this game from your shelf!')) {
+    let removeOwn = { _id: gameId, field: "wishlist" };
+    Meteor.call('games.removeFieldArray', removeOwn, (error) => {
       if (error) {
         Bert.alert(error.reason, 'danger');
       } else {
-        Bert.alert('Game deleted!', 'success');
+        Bert.alert('Game removed!', 'success');
       }
     });
   }
@@ -67,10 +68,10 @@ const Games = ({
               <td>
                 <Button
                   bsStyle="danger"
-                  onClick={() => handleRemove(_id)}
+                  onClick={() => handleRemoveOwn(_id)}
                   block
                 >
-                  Remove
+                  Remove from Wishlist
                 </Button>
               </td>
             </tr>
