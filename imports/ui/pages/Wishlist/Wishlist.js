@@ -42,6 +42,8 @@ const Games = ({
         <thead>
           <tr>
             <th>Title</th>
+            <th>Edition</th>
+            <th>Year Published</th>
             <th>RRP</th>
             <th />
             <th />
@@ -49,10 +51,12 @@ const Games = ({
         </thead>
         <tbody>
           {games.map(({
-            _id, title, rrp,
+            _id, title, rrp, edition, pubYear
           }) => (
             <tr key={_id}>
               <td>{title}</td>
+              <td>{edition}</td>
+              <td>{pubYear}</td>
               <td>RRP</td>
               <td>
                 <Button
