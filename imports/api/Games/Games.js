@@ -67,7 +67,7 @@ Games.schema = new SimpleSchema({
   },
   rrp: {
     type: String,
-    label: 'Alternate names for this games.',
+    label: 'Recomended Retail Price for this games.',
     optional: true,
   },
 });
