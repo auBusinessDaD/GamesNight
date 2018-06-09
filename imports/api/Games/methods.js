@@ -32,6 +32,8 @@ Meteor.methods({
     check(gam, {
       title: String,
       description: String,
+      altTitle: String,
+      rrp: String,
     });
 
     try {
@@ -45,6 +47,8 @@ Meteor.methods({
       _id: String,
       title: String,
       description: String,
+      altTitle: String,
+      rrp: String,
     });
 
     try {
@@ -120,6 +124,8 @@ rateLimit({
   methods: [
     'games.insert',
     'games.update',
+    'games.addFieldArray',
+    'games.removeFieldArray',
     'games.remove',
   ],
   limit: 5,
