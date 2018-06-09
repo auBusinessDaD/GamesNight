@@ -101,6 +101,6 @@ export default withTracker(() => {
   const subscription = Meteor.subscribe('games');
   return {
     loading: !subscription.ready(),
-    games: GamesCollection.find().fetch(),
+    games: GamesCollection.find({ wishlist: Meteor.userId() }).fetch(),
   };
 })(Games);
