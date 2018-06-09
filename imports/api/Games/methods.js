@@ -37,7 +37,7 @@ Meteor.methods({
     });
 
     try {
-      return Games.insert({ title: gam.title, description: gam.description, altTitle: gam.altTitle, rrp: gam.rrp });
+      return Games.insert({ gam });
     } catch (exception) {
       handleMethodException(exception);
     }
