@@ -37,7 +37,7 @@ Meteor.methods({
     });
 
     try {
-      return Games.insert({ $set: gam });
+      return Games.insert( gam );
     } catch (exception) {
       handleMethodException(exception);
     }
