@@ -74,7 +74,7 @@ Meteor.methods({
     try {
       const gameId = gam._id;
       const gamToAddField = Games.findOne({ _id: gameId });
-      let updatedArray = gamToAddField.owns.push( this.userId );//need to update "owns" with the gam.field value
+      //let updatedArray = gamToAddField.owns.push( this.userId );//need to update "owns" with the gam.field value
       
       Games.update(gameId, { $set: { [gam.field]: this.userId } });
       return gameId;
@@ -93,7 +93,7 @@ Meteor.methods({
     try {
       const gameId = gam._id;
       const gamToRemoveField = Games.findOne({ _id: gameId });
-      let updatedArray = gamToRemoveField.owns.arrayRemove( this.userId );//need to update "owns" with the gam.field value
+      //let updatedArray = gamToRemoveField.owns.arrayRemove( this.userId );//need to update "owns" with the gam.field value
       
       Games.update(gameId, { $set: { [gam.field]: '' } });//should be updatedArray
       return gameId;
