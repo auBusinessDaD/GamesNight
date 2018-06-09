@@ -108,9 +108,9 @@ Games.schema = new SimpleSchema({
     label: 'Who were the artists on this game.',
     optional: true,
   },
-  publishers: {
+  publisher: {
     type: String,
-    label: 'Who were the publishers of this game/edition.',
+    label: 'Who was the publisher of this game/edition.',
     optional: true,
   },
   categories: {
