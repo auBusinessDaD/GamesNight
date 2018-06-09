@@ -88,13 +88,13 @@ const Games = ({
         </thead>
         <tbody>
           {games.map(({
-            _id, title, owner, rrp, edition, pubYear, wishlist, owns
+            _id, title, rrp, edition, pubYear, publishers, wishlist, owns
           }) => (
             <tr key={_id}>
               <td>{title}</td>
               <td>{edition}</td>
               <td>{pubYear}</td>
-              <td>{owner}</td>
+              <td>{publishers}</td>
               <td>{rrp}</td>
               <td>
                 <Button
