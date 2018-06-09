@@ -28,7 +28,7 @@ const handleAddOwn = (gameId) => {//should we remove from wishlist if they have 
   });
 };
 
-const handleAddWishlist = (gameId) => {
+const handleAddWish = (gameId) => {
   let addOwn = { _id: gameId, field: "wishlist" };
   Meteor.call('games.addFieldArray', gameId, (error) => {
     if (error) {
@@ -52,7 +52,7 @@ const handleRemoveOwn = (gameId) => {
   }
 };
 
-const handleRemoveWishlist = (gameId) => {
+const handleRemoveWish = (gameId) => {
   let addOwn = { _id: gameId, field: "wishlist" };
   if (confirm('Are you sure? This will remove this game from your shelf!')) {
     Meteor.call('games.removeFieldArray', gameId, (error) => {
@@ -113,7 +113,7 @@ const Games = ({
               <td>
                 <Button
                   bsStyle="primary"
-                  onClick={() => handleAddWishlist(_id)}
+                  onClick={() => handleAddWish(_id)}
                   block
                 >
                   Add to wishlist - change if it is on my wishlist to - remove from wishlist
