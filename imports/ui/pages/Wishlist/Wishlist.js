@@ -35,7 +35,7 @@ const Games = ({
 }) => (!loading ? (
   <StyledGames>
     <div className="page-header clearfix">
-      <h4 className="pull-left">Games</h4>
+      <h4 className="pull-left">My Wishlist</h4>
     </div>
     {games.length ?
       <Table responsive>
