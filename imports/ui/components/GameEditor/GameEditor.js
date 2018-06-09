@@ -103,7 +103,7 @@ class GameEditor extends React.Component {
           <input
             type="text"
             className="form-control"
-            name="rrp"
+            name="edition"
             defaultValue={gam && gam.edition}
             placeholder="The edition number of this game!"
           />
@@ -113,7 +113,7 @@ class GameEditor extends React.Component {
           <input
             type="text"
             className="form-control"
-            name="rrp"
+            name="pubYear"
             defaultValue={gam && gam.pubYear}
             placeholder="The year in which this game/edition was published!"
           />
@@ -123,7 +123,7 @@ class GameEditor extends React.Component {
           <input
             type="text"
             className="form-control"
-            name="rrp"
+            name="players"
             defaultValue={gam && gam.players}
             placeholder="The number of players that can play this game!"
           />
@@ -133,7 +133,7 @@ class GameEditor extends React.Component {
           <input
             type="text"
             className="form-control"
-            name="rrp"
+            name="playTime"
             defaultValue={gam && gam.playTime}
             placeholder="The advised time to play this game!"
           />
@@ -143,7 +143,7 @@ class GameEditor extends React.Component {
           <input
             type="text"
             className="form-control"
-            name="rrp"
+            name="ageRange"
             defaultValue={gam && gam.ageRange}
             placeholder="The recomended age for players!"
           />
@@ -153,7 +153,7 @@ class GameEditor extends React.Component {
           <input
             type="text"
             className="form-control"
-            name="rrp"
+            name="designers"
             defaultValue={gam && gam.designers}
             placeholder="Who were the designers on this game!"
           />
@@ -163,7 +163,7 @@ class GameEditor extends React.Component {
           <input
             type="text"
             className="form-control"
-            name="rrp"
+            name="artists"
             defaultValue={gam && gam.artists}
             placeholder="Who were the artists on this game!"
           />
@@ -173,7 +173,7 @@ class GameEditor extends React.Component {
           <input
             type="text"
             className="form-control"
-            name="rrp"
+            name="publisher"
             defaultValue={gam && gam.publisher}
             placeholder="Who was the publisher of this game/edition!"
           />
