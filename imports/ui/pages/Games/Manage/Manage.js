@@ -17,18 +17,6 @@ const StyledGames = styled.div`
   }
 `;
 
-const handleRemove = (gameId) => {
-  if (confirm('Are you sure? This is permanent!')) {
-    Meteor.call('games.remove', gameId, (error) => {
-      if (error) {
-        Bert.alert(error.reason, 'danger');
-      } else {
-        Bert.alert('Game deleted!', 'success');
-      }
-    });
-  }
-};
-
 const Games = ({
   loading, games, match, history,
 }) => (!loading ? (
@@ -68,7 +56,7 @@ const Games = ({
               <td>
                 <Button
                   bsStyle="danger"
-                  onClick={() => handleRemove(_id)}
+                  onClick={() => history.push(`${match.url}/${_id}/edit`)}
                   block
                 >
                   Delete Game
