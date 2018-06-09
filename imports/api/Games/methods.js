@@ -34,6 +34,14 @@ Meteor.methods({
       description: String,
       altTitle: String,
       rrp: String,
+      edition: String,
+      pubYear: String,
+      players: String,
+      playTime: String,
+      ageRange: String,
+      designers: String,
+      artists: String,
+      publisher: String,
     });
 
     try {
@@ -49,6 +57,14 @@ Meteor.methods({
       description: String,
       altTitle: String,
       rrp: String,
+      edition: String,
+      pubYear: String,
+      players: String,
+      playTime: String,
+      ageRange: String,
+      designers: String,
+      artists: String,
+      publisher: String,
     });
 
     try {
