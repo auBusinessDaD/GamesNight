@@ -75,7 +75,7 @@ class GameEditor extends React.Component {
             className="form-control"
             name="description"
             defaultValue={gam && gam.description}
-            placeholder="Congratulations! Today is your day. You're off to Great Places! You're off and away!"
+            placeholder="Show the world how great this game is with your eloquent articulation!"
           />
         </FormGroup>
         <FormGroup>
@@ -85,7 +85,7 @@ class GameEditor extends React.Component {
             className="form-control"
             name="altTitle"
             defaultValue={gam && gam.altTitle}
-            placeholder="Oh, The Games We Will Play!"
+            placeholder="Oh, the confusion we could have!"
           />
         </FormGroup>
         <FormGroup>
@@ -95,7 +95,87 @@ class GameEditor extends React.Component {
             className="form-control"
             name="rrp"
             defaultValue={gam && gam.rrp}
-            placeholder="Oh, The Money You'll Pay!"
+            placeholder="Oh, the money they'll pay!"
+          />
+        </FormGroup>
+        <FormGroup>
+          <ControlLabel>Edition</ControlLabel>
+          <input
+            type="text"
+            className="form-control"
+            name="rrp"
+            defaultValue={gam && gam.edition}
+            placeholder="The edition number of this game!"
+          />
+        </FormGroup>
+        <FormGroup>
+          <ControlLabel>Year of Publishing</ControlLabel>
+          <input
+            type="text"
+            className="form-control"
+            name="rrp"
+            defaultValue={gam && gam.pubYear}
+            placeholder="The year in which this game/edition was published!"
+          />
+        </FormGroup>
+        <FormGroup>
+          <ControlLabel>Number of Players</ControlLabel>
+          <input
+            type="text"
+            className="form-control"
+            name="rrp"
+            defaultValue={gam && gam.players}
+            placeholder="The number of players that can play this game!"
+          />
+        </FormGroup>
+        <FormGroup>
+          <ControlLabel>Playing Time</ControlLabel>
+          <input
+            type="text"
+            className="form-control"
+            name="rrp"
+            defaultValue={gam && gam.playTime}
+            placeholder="The advised time to play this game!"
+          />
+        </FormGroup>
+        <FormGroup>
+          <ControlLabel>Age Range</ControlLabel>
+          <input
+            type="text"
+            className="form-control"
+            name="rrp"
+            defaultValue={gam && gam.ageRange}
+            placeholder="The recomended age for players!"
+          />
+        </FormGroup>
+        <FormGroup>
+          <ControlLabel>Designers</ControlLabel>
+          <input
+            type="text"
+            className="form-control"
+            name="rrp"
+            defaultValue={gam && gam.designers}
+            placeholder="Who were the designers on this game!"
+          />
+        </FormGroup>
+        <FormGroup>
+          <ControlLabel>Artists</ControlLabel>
+          <input
+            type="text"
+            className="form-control"
+            name="rrp"
+            defaultValue={gam && gam.artists}
+            placeholder="Who were the artists on this game!"
+          />
+        </FormGroup>
+        <FormGroup>
+          <ControlLabel>Publisher</ControlLabel>
+          <input
+            type="text"
+            className="form-control"
+            name="rrp"
+            defaultValue={gam && gam.publisher}
+            placeholder="Who was the publisher of this game/edition!"
           />
         </FormGroup>
         <Button type="submit" bsStyle="success">
@@ -107,7 +187,7 @@ class GameEditor extends React.Component {
 }
 
 GameEditor.defaultProps = {
-  gam: { title: '', description: '', altTitle: '', rrp: '' },
+  gam: { title: '', description: '', altTitle: '', rrp: '', edition: '', pubYear: '', players: '', playTime: '', ageRange: '', designers: '', artists: '', publisher: '' },
 };
 
 GameEditor.propTypes = {
