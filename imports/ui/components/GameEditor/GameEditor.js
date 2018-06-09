@@ -17,6 +17,12 @@ class GameEditor extends React.Component {
         description: {
           required: true,
         },
+        altTitle: {
+          required: false,
+        },
+        rrp: {
+          required: false,
+        },
       },
       messages: {
         title: {
@@ -37,6 +43,8 @@ class GameEditor extends React.Component {
     const gam = {
       title: form.title.value.trim(),
       description: form.description.value.trim(),
+      altTitle: form.altTitle.value.trim(),
+      rrp: form.rrp.value.trim(),
     };
 
     if (existingGame) gam._id = existingGame;
@@ -76,6 +84,26 @@ class GameEditor extends React.Component {
             placeholder="Congratulations! Today is your day. You're off to Great Places! You're off and away!"
           />
         </FormGroup>
+        <FormGroup>
+          <ControlLabel>Alternate Titles</ControlLabel>
+          <input
+            type="text"
+            className="form-control"
+            name="altTitle"
+            defaultValue={gam && gam.altTitle}
+            placeholder="Oh, The Games We Will Play!"
+          />
+        </FormGroup>
+        <FormGroup>
+          <ControlLabel>Recomended Retail Price</ControlLabel>
+          <input
+            type="text"
+            className="form-control"
+            name="rrp"
+            defaultValue={gam && gam.rrp}
+            placeholder="Oh, The Money You'll Pay!"
+          />
+        </FormGroup>
         <Button type="submit" bsStyle="success">
           {gam && gam._id ? 'Save Changes' : 'Add Game'}
         </Button>
@@ -85,7 +113,7 @@ class GameEditor extends React.Component {
 }
 
 GameEditor.defaultProps = {
-  gam: { title: '', description: '' },
+  gam: { title: '', description: '', altTitle: '', rrp: '' },
 };
 
 GameEditor.propTypes = {
