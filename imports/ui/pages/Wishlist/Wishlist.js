@@ -42,20 +42,18 @@ const Games = ({
         <thead>
           <tr>
             <th>Title</th>
-            <th>Last Updated</th>
-            <th>Created</th>
+            <th>RRP</th>
             <th />
             <th />
           </tr>
         </thead>
         <tbody>
           {games.map(({
-            _id, title, createdAt, updatedAt,
+            _id, title, rrp,
           }) => (
             <tr key={_id}>
               <td>{title}</td>
-              <td>{timeago(updatedAt)}</td>
-              <td>{monthDayYearAtTime(createdAt)}</td>
+              <td>RRP</td>
               <td>
                 <Button
                   bsStyle="primary"
@@ -71,7 +69,7 @@ const Games = ({
                   onClick={() => handleRemoveWish(_id)}
                   block
                 >
-                  Remove from Wishlist
+                  Remove
                 </Button>
               </td>
             </tr>
