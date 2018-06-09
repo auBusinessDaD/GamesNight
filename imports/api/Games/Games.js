@@ -21,6 +21,9 @@ Games.schema = new SimpleSchema({
   owner: {
     type: String,
     label: 'The ID of the user this game is published by.',
+    autoValue() {
+      return this.userId;
+    },
   },
   createdAt: {
     type: String,
