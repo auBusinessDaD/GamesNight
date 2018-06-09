@@ -86,7 +86,7 @@ const Games = ({
         </thead>
         <tbody>
           {games.map(({
-            _id, title, createdAt, updatedAt,
+            _id, title, createdAt, updatedAt, wishlist, owns
           }) => (
             <tr key={_id}>
               <td>{title}</td>
@@ -104,19 +104,19 @@ const Games = ({
               <td>
                 <Button
                   bsStyle="primary"
-                  onClick={() => handleAddOwn(_id)}
+                  onClick={() => handleAddWish(_id)}
                   block
                 >
-                  I own this game - change if I already own to - remove from my shelf
+                  Add to wishlist
                 </Button>
               </td>
               <td>
                 <Button
                   bsStyle="primary"
-                  onClick={() => handleAddWish(_id)}
+                  onClick={() => handleAddOwn(_id)}
                   block
                 >
-                  Add to wishlist - change if it is on my wishlist to - remove from wishlist
+                  I own this game
                 </Button>
               </td>
             </tr>
@@ -124,8 +124,8 @@ const Games = ({
         </tbody>
       </Table> : <BlankState
         icon={{ style: 'solid', symbol: 'file-alt' }}
-        title="You're plum out of games to find, friend!"
-        subtitle="Add your first game by clicking the button below."
+        title="We're plum out of games to find, friend!"
+        subtitle="Add a game for everyone to find by clicking the button below."
         action={{
           style: 'success',
           onClick: () => history.push(`${match.url}/new`),
