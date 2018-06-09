@@ -17,12 +17,6 @@ class GameEditor extends React.Component {
         description: {
           required: true,
         },
-        altTitle: {
-          required: false,
-        },
-        rrp: {
-          required: false,
-        },
       },
       messages: {
         title: {
