@@ -30,7 +30,7 @@ const handleAddOwn = (gameId) => {//should we remove from wishlist if they have 
 
 const handleAddWish = (gameId) => {
   let addOwn = { _id: gameId, field: "wishlist" };
-  Meteor.call('games.addFieldArray', gameId, (error) => {
+  Meteor.call('games.addFieldArray', addOwn, (error) => {
     if (error) {
       Bert.alert(error.reason, 'danger');
     } else {
@@ -42,7 +42,7 @@ const handleAddWish = (gameId) => {
 const handleRemoveOwn = (gameId) => {
   if (confirm('Are you sure? This will remove this game from your shelf!')) {
     let addOwn = { _id: gameId, field: "owns" };
-    Meteor.call('games.removeFieldArray', gameId, (error) => {
+    Meteor.call('games.removeFieldArray', addOwn, (error) => {
       if (error) {
         Bert.alert(error.reason, 'danger');
       } else {
@@ -55,7 +55,7 @@ const handleRemoveOwn = (gameId) => {
 const handleRemoveWish = (gameId) => {
   let addOwn = { _id: gameId, field: "wishlist" };
   if (confirm('Are you sure? This will remove this game from your shelf!')) {
-    Meteor.call('games.removeFieldArray', gameId, (error) => {
+    Meteor.call('games.removeFieldArray', addOwn, (error) => {
       if (error) {
         Bert.alert(error.reason, 'danger');
       } else {
