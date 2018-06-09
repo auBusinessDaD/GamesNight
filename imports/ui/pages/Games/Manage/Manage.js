@@ -55,11 +55,11 @@ const Games = ({
               </td>
               <td>
                 <Button
-                  bsStyle="danger"
+                  bsStyle="primary"
                   onClick={() => history.push(`${match.url}/${_id}/edit`)}
                   block
                 >
-                  Delete Game
+                  Edit
                 </Button>
               </td>
             </tr>
