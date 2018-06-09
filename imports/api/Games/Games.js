@@ -22,7 +22,7 @@ Games.schema = new SimpleSchema({
     type: String,
     label: 'The ID of the user this game is published by.',
     autoValue() {
-      return this.userId;
+      if (this.isInsert) return this.userId;
     },
   },
   createdAt: {
@@ -47,7 +47,7 @@ Games.schema = new SimpleSchema({
     type: String,
     label: 'An extract of the game.',
   },
-  wishlist: {//this is currently duplicating the Wishlist.js collection
+  wishlist: {
     type: Array,
     label: 'People who want this game',
     optional: true,
@@ -55,7 +55,7 @@ Games.schema = new SimpleSchema({
   'wishlist.$': {
     type: String,
   },
-  owns: {//this is currently duplicating the Mine.js collection
+  owns: {
     type: Array,
     label: 'People who own this game',
     optional: true,
