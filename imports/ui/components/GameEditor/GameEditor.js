@@ -39,6 +39,14 @@ class GameEditor extends React.Component {
       description: form.description.value.trim(),
       altTitle: form.altTitle.value.trim(),
       rrp: form.rrp.value.trim(),
+      edition: form.edition.value.trim(),
+      pubYear: form.pubYear.value.trim(),
+      players: form.players.value.trim(),
+      playTime: form.playTime.value.trim(),
+      ageRange: form.ageRange.value.trim(),
+      designers: form.designers.value.trim(),
+      artists: form.artists.value.trim(),
+      publisher: form.publisher.value.trim(),
     };
 
     if (existingGame) gam._id = existingGame;
