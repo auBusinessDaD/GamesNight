@@ -57,7 +57,7 @@ const Games = ({
               <td>{title}</td>
               <td>{edition}</td>
               <td>{pubYear}</td>
-              <td>RRP</td>
+              <td>{rrp}</td>
               <td>
                 <Button
                   bsStyle="primary"
