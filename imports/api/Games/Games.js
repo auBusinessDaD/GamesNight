@@ -21,6 +21,7 @@ Games.schema = new SimpleSchema({
   owner: {
     type: String,
     label: 'The ID of the user this game is published by.',
+    regEx: SimpleSchema.RegEx.Id,
     autoValue() {
       if (this.isInsert) return this.userId;
     },
@@ -59,6 +60,7 @@ Games.schema = new SimpleSchema({
   },
   'wishlist.$': {
     type: String,
+    regEx: SimpleSchema.RegEx.Id,
   },
   owns: {
     type: Array,
@@ -67,6 +69,7 @@ Games.schema = new SimpleSchema({
   },
   'owns.$': {
     type: String,
+    regEx: SimpleSchema.RegEx.Id,
   },
   rrp: {
     type: String,
