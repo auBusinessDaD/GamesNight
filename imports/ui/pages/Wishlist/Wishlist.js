@@ -87,15 +87,6 @@ const Games = ({
                 </Button>
               </td>
               <td>
-                <Button
-                  bsStyle="danger"
-                  onClick={() => handleRemoveWish(_id)}
-                  block
-                >
-                  Remove
-                </Button>
-              </td>
-              <td>
                   <Button
                     bsStyle="primary"
                     onClick={() => handleAddOwn(_id)}
@@ -103,6 +94,15 @@ const Games = ({
                   >
                     Add to My Shelf
                   </Button>
+              </td>
+              <td>
+                <Button
+                  bsStyle="danger"
+                  onClick={() => handleRemoveWish(_id)}
+                  block
+                >
+                  Remove
+                </Button>
               </td>
             </tr>
           ))}
