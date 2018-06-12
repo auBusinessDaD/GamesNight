@@ -7,7 +7,7 @@
     "productAddress": "Melbourne, Australia"
   },
   "private": {
-    "MAIL_URL": "smtp://1dbc63a5a74526a8c2b1d93bd134f74c:69276c66447899107f26078bcf4b12bd@in-v3.mailjet.com:587",
+    "MAIL_URL": "smtp://1dbc63a5a74526a8c2b1d93bd134f74c:67e6227f864504c711e673466ac58e6f@in-v3.mailjet.com:587",
     "OAuth": {
       "facebook": {
         "enabled": false,
