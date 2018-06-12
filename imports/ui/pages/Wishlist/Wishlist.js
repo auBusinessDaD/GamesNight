@@ -17,6 +17,26 @@ const StyledGames = styled.div`
   }
 `;
 
+const handleAddOwn = (gameId) => {//should we remove from wishlist if they have marked as owned?
+  let addOwn = { _id: gameId, field: "owns" };
+  Meteor.call('games.addFieldArray', addOwn, (error) => {
+    if (error) {
+      Bert.alert(error.reason, 'danger');
+    } else {
+      Bert.alert('Game added to your shelf! This will now be removed from your Wishlist.', 'success');
+      
+      let removeOwn = { _id: gameId, field: "wishlist" };
+      Meteor.call('games.removeFieldArray', removeOwn, (error) => {
+        if (error) {
+          Bert.alert(error.reason, 'danger');
+        } else {
+          Bert.alert('Game removed from your wishlist!', 'success');
+        }
+      });
+    }
+  });
+};
+
 const handleRemoveWish = (gameId) => {
   if (confirm('Are you sure? This will remove this game from your wishlist!')) {
     let removeOwn = { _id: gameId, field: "wishlist" };
@@ -47,6 +67,7 @@ const Games = ({
             <th>RRP</th>
             <th />
             <th />
+            <th />
           </tr>
         </thead>
         <tbody>
@@ -75,6 +96,15 @@ const Games = ({
                 >
                   Remove
                 </Button>
+              </td>
+              <td>
+                  <Button
+                    bsStyle="primary"
+                    onClick={() => handleAddOwn(_id)}
+                    block
+                  >
+                    Add to My Shelf
+                  </Button>
               </td>
             </tr>
           ))}
