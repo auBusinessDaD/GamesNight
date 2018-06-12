@@ -1,6 +1,6 @@
 import seeder from '@cleverbeagle/seeder';
 import { Meteor } from 'meteor/meteor';
-import Documents from '../../api/Games/Games';
+import Games from '../../api/Games/Games';
 
 const gamesSeed = userId => ({
   collection: Games,
