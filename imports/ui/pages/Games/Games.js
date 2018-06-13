@@ -115,13 +115,21 @@ const Games = ({
                 </Button>
               </td>
               <td>
-                <Button
-                  bsStyle="primary"
-                  onClick={() => handleAddOwn(_id)}
-                  block
-                >
-                  Add to My Shelf
-                </Button>
+                { {owns}.includes(Meteor.userId()) ?
+                  <Button
+                    bsStyle="primary"
+                    onClick={() => handleAddOwn(_id)}
+                    block
+                  >
+                    Remove from my shelf
+                  </Button>
+                  : <Button
+                    bsStyle="primary"
+                    onClick={() => handleAddOwn(_id)}
+                    block
+                  >
+                    Add the Shelf
+                  </Button>}
               </td>
             </tr>
           ))}
