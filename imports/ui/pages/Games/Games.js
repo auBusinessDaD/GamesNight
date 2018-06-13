@@ -88,7 +88,7 @@ const Games = ({
         </thead>
         <tbody>
           {games.map(({
-            _id, title, rrp, edition, pubYear, publisher, wishlist, owns
+            _id, title, rrp, edition, pubYear, publisher, wishlist, owned: game.owns.includes(userId)
           }) => (
             <tr key={_id}>
               <td>{title}</td>
@@ -115,13 +115,7 @@ const Games = ({
                 </Button>
               </td>
               <td>
-                <Button
-                  bsStyle="primary"
-                  onClick={() => handleAddOwn(_id)}
-                  block
-                >
-                  Add to My Shelf
-                </Button>
+                {owned}
               </td>
             </tr>
           ))}
