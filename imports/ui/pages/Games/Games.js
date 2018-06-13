@@ -115,7 +115,13 @@ const Games = ({
                 </Button>
               </td>
               <td>
-                {owns}
+                <Button
+                  bsStyle="primary"
+                  onClick={() => handleAddOwn(_id)}
+                  block
+                >
+                  Add to My Shelf
+                </Button>
               </td>
             </tr>
           ))}
