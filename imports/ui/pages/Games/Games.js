@@ -115,7 +115,7 @@ const Games = ({
                 </Button>
               </td>
               <td>
-                { {owns}.includes(Meteor.userId()) ?
+                { {owns.includes(Meteor.userId())} ?
                   <Button
                     bsStyle="primary"
                     onClick={() => handleAddOwn(_id)}
