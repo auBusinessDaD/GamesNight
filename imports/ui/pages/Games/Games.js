@@ -115,21 +115,13 @@ const Games = ({
                 </Button>
               </td>
               <td>
-                { {ownsGame} ?
-                  <Button
-                    bsStyle="danger"
-                    onClick={() => handleRemoveOwn(_id)}
-                    block
-                  >
-                    Remove from my shelf
-                  </Button>
-                  : <Button
-                    bsStyle="primary"
-                    onClick={() => handleAddOwn(_id)}
-                    block
-                  >
-                    Add to my Shelf
-                  </Button> }
+                <Button
+                  bsStyle="primary"
+                  onClick={() => handleAddOwn(_id)}
+                  block
+                >
+                  Add to My Shelf
+                </Button>
               </td>
             </tr>
           ))}
