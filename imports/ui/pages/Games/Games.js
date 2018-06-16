@@ -115,7 +115,7 @@ const Games = ({
                 </Button>
               </td>
               <td>
-                { {gameOwned} ?
+                { {ownsGame} ?
                   <Button
                     bsStyle="danger"
                     onClick={() => handleRemoveOwn(_id)}
