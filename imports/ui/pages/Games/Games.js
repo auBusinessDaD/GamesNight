@@ -150,7 +150,7 @@ export default withTracker(() => {
   const subscription = Meteor.subscribe('games');
   const gamesArray = GamesCollection.find().fetch();
   const gamesArrayMap = gamesArray.map( (game) => {
-    const gameOwned = game.owns.indexOf( Meteor.userId() ) > -1 : false;
+    const gameOwned = game ? game.owns.indexOf( Meteor.userId() ) > -1 : false;
     return {
       ...game,
       ownsGame: gameOwned ? true : false;
