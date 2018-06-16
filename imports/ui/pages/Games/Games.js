@@ -153,7 +153,7 @@ export default withTracker(() => {
     const gameOwned = game ? game.owns.indexOf( Meteor.userId() ) > -1 : false;
     return {
       ...game,
-      ownsGame: gameOwned ? true : false;
+      ownsGame: gameOwned ? true : false,
     };
   } );
   return {
