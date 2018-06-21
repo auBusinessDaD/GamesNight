@@ -3,8 +3,8 @@
   "private": true,
   "scripts": {
     "start": "meteor --settings settings-development.json",
-    "staging": "DEPLOY_HOSTNAME=us-east-1.galaxy-deploy.meteor.com meteor deploy <staging-subdomain>.meteorapp.com --settings settings-staging.json",
-    "production": "DEPLOY_HOSTNAME=us-east-1.galaxy-deploy.meteor.com meteor deploy <production-subdomain>.meteorapp.com --settings settings-production.json",
+    "staging": "DEPLOY_HOSTNAME=ap-southeast-2.galaxy-ingress.meteor.com meteor deploy staginggn.meteorapp.com --settings settings-staging.json",
+    "production": "DEPLOY_HOSTNAME=ap-southeast-2.galaxy-ingress.meteor.com meteor deploy gamesnight.meteorapp.com --settings settings-production.json",
     "test": "jest"
   },
   "dependencies": {
@@ -120,13 +120,13 @@
       "import/resolver": "meteor"
     }
   },
-  "version": "1.5.0",
-  "description": "A boilerplate for products.",
+  "version": "1.1.0",
+  "description": "A modern take on exploring tabletop gaming.",
   "main": "index.js",
   "repository": {
-    "url": "git@cleverbeagle:cleverbeagle/pup.git",
+    "url": "git@auBusinessDaD:GamesNight/pup.git",
     "type": "git"
   },
-  "author": "cleverbeagle <ryan.glover@cleverbeagle.com>",
+  "author": "Daniel lewis <daniel@pasme.com.au",
   "license": "MIT"
 }
