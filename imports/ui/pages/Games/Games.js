@@ -23,7 +23,14 @@ const handleAddOwn = (gameId) => {//should we remove from wishlist if they have 
     if (error) {
       Bert.alert(error.reason, 'danger');
     } else {
-      Bert.alert('Game added to your shelf!', 'success');
+      let removeOwn = { _id: gameId, field: "wishlist" };
+      Meteor.call('games.removeFieldArray', removeOwn, (error) => {
+        if (error) {
+          Bert.alert(error.reason, 'danger');
+        } else {
+          Bert.alert('Game removed from your Wishlist and added to your shelf!', 'success');
+        }
+      });
     }
   });
 };
