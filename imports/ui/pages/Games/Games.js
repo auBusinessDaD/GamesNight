@@ -88,7 +88,7 @@ const Games = ({
         </thead>
         <tbody>
           {games.map(({
-            _id, title, rrp, edition, pubYear, publisher, wishlist, owns, ownsGame
+            _id, title, rrp, edition, pubYear, publisher, wishGame, ownsGame
           }) => (
             <tr key={_id}>
               <td>{title}</td>
@@ -106,13 +106,21 @@ const Games = ({
                 </Button>
               </td>
               <td>
-                <Button
-                  bsStyle="primary"
-                  onClick={() => handleAddWish(_id)}
-                  block
-                >
-                  Add to My Wishlist
-                </Button>
+                { wishGame ?
+                  <Button
+                    bsStyle="danger"
+                    onClick={() => handleRemoveWish(_id)}
+                    block
+                  >
+                    Remove from my Wishlist
+                  </Button>
+                  : <Button
+                    bsStyle="primary"
+                    onClick={() => handleAddWish(_id)}
+                    block
+                  >
+                    Add to my Wishlist
+                  </Button> }
               </td>
               <td>
                 { ownsGame ?
@@ -157,13 +165,18 @@ Games.propTypes = {
 export default withTracker(() => {
   const subscription = Meteor.subscribe('games');
   const gamesArray = GamesCollection.find().fetch();
+  
   const gamesArrayMap = gamesArray.map( (game) => {
+    const gameWished = game ? game.wishlist.indexOf( Meteor.userId() ) > -1 : false;
     const gameOwned = game ? game.owns.indexOf( Meteor.userId() ) > -1 : false;
+    
     return {
       ...game,
+      wishGame: gameWished ? true : false,
       ownsGame: gameOwned ? true : false,
     };
   } );
+  
   return {
     loading: !subscription.ready(),
     games: gamesArrayMap,
