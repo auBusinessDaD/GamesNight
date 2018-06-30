@@ -44,6 +44,9 @@ Meteor.methods({
       publisher: String,
     });
     
+    gam['owns'] = "";
+    gam[ 'wishlist' ] = "";
+    
     try {
       return Games.insert( gam );
     } catch (exception) {
