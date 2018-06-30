@@ -88,7 +88,7 @@ const Games = ({
         </thead>
         <tbody>
           {games.map(({
-            _id, title, rrp, edition, pubYear, publisher, wishlist, owns
+            _id, title, rrp, edition, pubYear, publisher, wishlist, owns, ownsGame
           }) => (
             <tr key={_id}>
               <td>{title}</td>
@@ -115,13 +115,21 @@ const Games = ({
                 </Button>
               </td>
               <td>
-                <Button
-                  bsStyle="primary"
-                  onClick={() => handleAddOwn(_id)}
-                  block
-                >
-                  Add to My Shelf
-                </Button>
+                { ownsGame ?
+                  <Button
+                    bsStyle="danger"
+                    onClick={() => handleRemoveOwn(_id)}
+                    block
+                  >
+                    Remove from my shelf
+                  </Button>
+                  : <Button
+                    bsStyle="primary"
+                    onClick={() => handleAddOwn(_id)}
+                    block
+                  >
+                    Add to my Shelf
+                  </Button> }
               </td>
             </tr>
           ))}
