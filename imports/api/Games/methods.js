@@ -43,7 +43,10 @@ Meteor.methods({
       artists: String,
       publisher: String,
     });
-
+    
+    gam['owns'] = "";
+    gam['wishlist'] = "";
+    
     try {
       return Games.insert( gam );
     } catch (exception) {
@@ -89,8 +92,6 @@ Meteor.methods({
 
     try {
       const gameId = gam._id;
-      //const gamToAddField = Games.findOne({ _id: gameId });
-      //let updatedArray = gamToAddField.owns.push( this.userId );//need to update "owns" with the gam.field value
       
       Games.update(gameId, { $push: { [gam.field]: this.userId } });
       return gameId;
@@ -108,8 +109,6 @@ Meteor.methods({
 
     try {
       const gameId = gam._id;
-      //const gamToRemoveField = Games.findOne({ _id: gameId });
-      //let updatedArray = gamToRemoveField.owns.arrayRemove( this.userId );//need to update "owns" with the gam.field value
       
       Games.update(gameId, { $pull: { [gam.field]: this.userId } });
       return gameId;
