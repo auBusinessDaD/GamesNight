@@ -195,7 +195,7 @@ class GameEditor extends React.Component {
 }
 
 GameEditor.defaultProps = {
-  gam: { title: '', description: '', altTitle: '', rrp: '', edition: '', pubYear: '', players: '', playTime: '', ageRange: '', designers: '', artists: '', publisher: '' },
+  gam: { title: '', description: '', wishlist: '', owns: '', altTitle: '', rrp: '', edition: '', pubYear: '', players: '', playTime: '', ageRange: '', designers: '', artists: '', publisher: '' },
 };
 
 GameEditor.propTypes = {
