@@ -44,8 +44,8 @@ Meteor.methods({
       publisher: String,
     });
     
-    gam['owns'] = [];
-    gam[ 'wishlist' ] = [];
+    gam['owns'] = new Array();
+    gam[ 'wishlist' ] = new Array();
     
     try {
       return Games.insert( gam );
