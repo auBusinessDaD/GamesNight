@@ -9,18 +9,17 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Accounts } from 'meteor/accounts-base';
+import { Meteor } from 'meteor/meteor';
+import { Roles } from 'meteor/alanning:roles';
 import Navigation from '../../components/Navigation/Navigation';
 import Authenticated from '../../components/Authenticated/Authenticated';
+import Authorized from '../../components/Authorized/Authorized';
 import Public from '../../components/Public/Public';
 import Index from '../../pages/Index/Index';
-import Games from '../../pages/Games/Games';
-import ViewGame from '../../pages/Games/ViewGame';
-import ManageGames from '../../pages/Games/Manage/Manage';
-import ManageGame from '../../pages/Games/Manage/ManageGame';
-import NewGame from '../../pages/Games/Manage/NewGame';
-import EditGame from '../../pages/Games/Manage/EditGame';
-import MyGames from '../../pages/Mine/Mine';
-import WishGames from '../../pages/Wishlist/Wishlist';
+import Documents from '../../pages/Documents/Documents';
+import NewDocument from '../../pages/NewDocument/NewDocument';
+import ViewDocument from '../../pages/ViewDocument/ViewDocument';
+import EditDocument from '../../pages/EditDocument/EditDocument';
 import Signup from '../../pages/Signup/Signup';
 import Login from '../../pages/Login/Login';
 import Logout from '../../pages/Logout/Logout';
@@ -28,21 +27,26 @@ import VerifyEmail from '../../pages/VerifyEmail/VerifyEmail';
 import RecoverPassword from '../../pages/RecoverPassword/RecoverPassword';
 import ResetPassword from '../../pages/ResetPassword/ResetPassword';
 import Profile from '../../pages/Profile/Profile';
+import AdminUsers from '../../pages/AdminUsers/AdminUsers';
+import AdminUser from '../../pages/AdminUser/AdminUser';
+import AdminUserSettings from '../../pages/AdminUserSettings/AdminUserSettings';
 import NotFound from '../../pages/NotFound/NotFound';
 import Footer from '../../components/Footer/Footer';
 import Terms from '../../pages/Terms/Terms';
 import Privacy from '../../pages/Privacy/Privacy';
+import ExamplePage from '../../pages/ExamplePage/ExamplePage';
 import VerifyEmailAlert from '../../components/VerifyEmailAlert/VerifyEmailAlert';
+import GDPRConsentModal from '../../components/GDPRConsentModal/GDPRConsentModal';
 import { onLogin, onLogout } from '../../../modules/redux/actions';
+import withTrackerSSR from '../../../modules/with-tracker-ssr';
+import getUserName from '../../../modules/get-user-name';
 
 const StyledApp = styled.div`
-  visibility: ${props => (props.ready ? 'visible' : 'hidden')};
-
+  visibility: ${props => (props.ready && !props.loading ? 'visible' : 'hidden')};
   > .container {
     margin-bottom: 80px;
     padding-bottom: 20px;
   }
-
   .verify-email {
     margin-bottom: 0;
     padding: 0;
@@ -51,11 +55,9 @@ const StyledApp = styled.div`
     background: #fff;
     color: var(--gray-dark);
     border-radius: 0;
-
     p {
       padding: 19px;
     }
-
     .btn {
       padding: 0;
     }
@@ -87,7 +89,7 @@ class App extends React.Component {
   render() {
     const { props, state, setAfterLoginPath } = this;
     return (
-      <StyledApp ready={this.state.ready}>
+      <StyledApp ready={this.state.ready} loading={props.loading}>
         {props.authenticated ?
           <VerifyEmailAlert
             userId={props.userId}
@@ -95,18 +97,15 @@ class App extends React.Component {
             emailAddress={props.emailAddress}
           />
           : ''}
+        {props.authenticated ? <GDPRConsentModal userId={props.userId} /> : ''}
         <Navigation {...props} {...state} />
         <Grid>
           <Switch>
             <Route exact name="index" path="/" component={Index} />
-            <Authenticated exact path="/games" component={Games} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
-            <Route exact path="/games/:_id" component={ViewGame} />
-            <Authenticated exact path="/mine" component={MyGames} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
-            <Authenticated exact path="/wishlist" component={WishGames} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
-            <Authenticated exact path="/game/manage" component={ManageGames} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
-            <Authenticated exact path="/game/manage/new" component={NewGame} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
-            <Route exact path="/game/manage/:_id" component={ManageGame} />
-            <Authenticated exact path="/game/manage/:_id/edit" component={EditGame} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
+            <Authenticated exact path="/documents" component={Documents} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
+            <Authenticated exact path="/documents/new" component={NewDocument} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
+            <Route exact path="/documents/:_id" component={ViewDocument} />
+            <Authenticated exact path="/documents/:_id/edit" component={EditDocument} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
             <Authenticated exact path="/profile" component={Profile} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
             <Public path="/signup" component={Signup} {...props} {...state} />
             <Public path="/login" component={Login} {...props} {...state} />
@@ -116,6 +115,10 @@ class App extends React.Component {
             <Route name="reset-password" path="/reset-password/:token" component={ResetPassword} />
             <Route name="terms" path="/terms" component={Terms} />
             <Route name="privacy" path="/privacy" component={Privacy} />
+            <Route name="examplePage" path="/example-page" component={ExamplePage} />
+            <Authorized exact allowedRoles={['admin']} path="/admin/users" pathAfterFailure="/" component={AdminUsers} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
+            <Authorized exact allowedRoles={['admin']} path="/admin/users/settings" pathAfterFailure="/" component={AdminUserSettings} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
+            <Authorized exact allowedRoles={['admin']} path="/admin/users/:_id" pathAfterFailure="/" component={AdminUser} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
             <Route component={NotFound} />
           </Switch>
         </Grid>
@@ -146,4 +149,26 @@ const mapDispatchToProps = dispatch => ({
   handleOnLogout: data => dispatch(onLogout(data)),
 });
 
-export default compose(connect(mapStateToProps, mapDispatchToProps))(App);
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withTrackerSSR(() => {
+    const app = Meteor.subscribe('app');
+    const loggingIn = Meteor.loggingIn();
+    const user = Meteor.user();
+    const userId = Meteor.userId();
+    const loading = !app.ready() && !Roles.subscription.ready();
+    const name = user && user.profile && user.profile.name && getUserName(user.profile.name);
+    const emailAddress = user && user.emails && user.emails[0].address;
+
+    return {
+      loading,
+      loggingIn,
+      authenticated: !loggingIn && !!userId,
+      name: name || emailAddress,
+      roles: Roles.getRolesForUser(userId),
+      userId,
+      emailAddress,
+      emailVerified: user && user.emails ? user && user.emails && user.emails[0].verified : true,
+    };
+  }),
+)(App);
