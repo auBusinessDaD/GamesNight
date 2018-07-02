@@ -13,7 +13,7 @@ import mainReducer from '../../modules/redux/reducers';
 import parseUrlForSSR from '../../modules/parse-url-for-ssr';
 
 onPageLoad((sink) => {
-  const documentURL = parseUrlForSSR(sink.request.url, 'documents');
+  const gameURL = parseUrlForSSR(sink.request.url, 'games');
 
   const context = {};
   const data = {
@@ -25,7 +25,7 @@ onPageLoad((sink) => {
     userId: null,
     emailAddress: '',
     emailVerified: false,
-    doc: documentURL.isMatch ? Meteor.call('documents.findOne', documentURL.parts[1]) : '',
+    gam: gameURL.isMatch ? Meteor.call('games.findOne', gameURL.parts[1]) : '',
   };
 
   const store = createStore(mainReducer, data, applyMiddleware(thunk));
