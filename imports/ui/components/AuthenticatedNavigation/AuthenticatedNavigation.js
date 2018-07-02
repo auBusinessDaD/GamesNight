@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Roles } from 'meteor/alanning:roles';
 
-const AuthenticatedNavigation = ({ name, history }) => (
+const AuthenticatedNavigation = ({ name, history, userId }) => (
   <div>
     <Nav>
       <LinkContainer to="/games">
