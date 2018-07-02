@@ -19,14 +19,22 @@ const AuthenticatedNavigation = ({ name, history }) => (
       <LinkContainer to="/game/manage">
         <NavItem eventKey={4} href="/game/manage">Manage Games</NavItem>
       </LinkContainer>
+        {Roles.userIsInRole(userId, 'admin') ? <NavDropdown eventKey={5} title="Admin" id="admin-nav-dropdown">
+          <LinkContainer exact to="/admin/users">
+            <NavItem eventKey={5.1} href="/admin/users">Users</NavItem>
+          </LinkContainer>
+          <LinkContainer exact to="/admin/users/settings">
+            <NavItem eventKey={5.2} href="/admin/users/settings">User Settings</NavItem>
+          </LinkContainer>
+        </NavDropdown> : ''}
     </Nav>
     <Nav pullRight>
-      <NavDropdown eventKey={5} title={name} id="user-nav-dropdown">
+      <NavDropdown eventKey={6} title={name} id="user-nav-dropdown">
         <LinkContainer to="/profile">
-          <NavItem eventKey={5.1} href="/profile">Profile</NavItem>
+          <NavItem eventKey={6.1} href="/profile">Profile</NavItem>
         </LinkContainer>
         <MenuItem divider />
-        <MenuItem eventKey={5.2} onClick={() => history.push('/logout')}>Logout</MenuItem>
+        <MenuItem eventKey={6.2} onClick={() => history.push('/logout')}>Logout</MenuItem>
       </NavDropdown>
     </Nav>
   </div>
