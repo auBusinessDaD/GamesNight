@@ -174,7 +174,7 @@ export default compose(
       authenticated: !loggingIn && !!userId,
       name: name || emailAddress,
       roles: Roles.getRolesForUser(userId),
-      userId,
+      userId: Meteor.userId(),
       emailAddress,
       emailVerified: user && user.emails ? user && user.emails && user.emails[0].verified : true,
     };
