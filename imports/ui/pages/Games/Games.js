@@ -49,7 +49,7 @@ const handleAdd = (gameId, gameField) => {
 const handleRemove = (gameId, gameField) => {
   let remItem = { _id: gameId, field: gameField };
   
-  if (confirm('Are you sure? Like, REALLY sure!?!)) {
+  if (confirm('Are you sure? Like, REALLY sure!?!')) {
     Meteor.call('games.removeFieldArray', remItem, (error) => {
       if (error) {
         Bert.alert(error.reason, 'danger');
