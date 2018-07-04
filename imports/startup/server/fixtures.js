@@ -4,7 +4,7 @@ import Games from '../../api/Games/Games';
 
 const gamesSeed = userId => ({
   collection: Games,
-  environments: ['development', 'staging'],
+  environments: ['staging'],//['development', 'staging'],
   noLimit: true,
   modelCount: 5,
   model(dataIndex) {
