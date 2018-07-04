@@ -35,38 +35,26 @@ const handleAddOwn = (gameId) => {//should we remove from wishlist if they have 
   });
 };
 
-const handleAddWish = (gameId) => {
-  let addOwn = { _id: gameId, field: "wishlist" };
-  Meteor.call('games.addFieldArray', addOwn, (error) => {
+const handleAdd = (gameId, gameField) => {
+  let addItem = { _id: gameId, field: gameField };
+  Meteor.call('games.addFieldArray', addItem, (error) => {
     if (error) {
       Bert.alert(error.reason, 'danger');
     } else {
-      Bert.alert('Game added to your wishlist!', 'success');
+      Bert.alert('Your wish our command! So it be done!', 'success');
     }
   });
 };
 
-const handleRemoveOwn = (gameId) => {
-  if (confirm('Are you sure? This will remove this game from your shelf!')) {
-    let addOwn = { _id: gameId, field: "owns" };
-    Meteor.call('games.removeFieldArray', addOwn, (error) => {
+const handleRemove = (gameId, gameField) => {
+  let remItem = { _id: gameId, field: gameField };
+  
+  if (confirm('Are you sure? Like, REALLY sure!?!)) {
+    Meteor.call('games.removeFieldArray', remItem, (error) => {
       if (error) {
         Bert.alert(error.reason, 'danger');
       } else {
-        Bert.alert('Game removed from your shelf!', 'success');
-      }
-    });
-  }
-};
-
-const handleRemoveWish = (gameId) => {
-  let addOwn = { _id: gameId, field: "wishlist" };
-  if (confirm('Are you sure? This will remove this game from your shelf!')) {
-    Meteor.call('games.removeFieldArray', addOwn, (error) => {
-      if (error) {
-        Bert.alert(error.reason, 'danger');
-      } else {
-        Bert.alert('Game removed from your wishlist!', 'success');
+        Bert.alert('Your wish our command! So it be done!', 'success');
       }
     });
   }
@@ -88,6 +76,7 @@ const Games = ({
             <th>Year Published</th>
             <th>Publisher</th>
             <th>RRP</th>
+            <th />
             <th />
             <th />
             <th />
@@ -113,37 +102,54 @@ const Games = ({
                 </Button>
               </td>
               <td>
-                { wishGame ?
+                { wantsPlay ?
                   <Button
                     bsStyle="danger"
-                    onClick={() => handleRemoveWish(_id)}
+                    onClick={() => handleRemove(_id, "wantPlay")}
                     block
                   >
-                    Remove from my Wishlist
+                    Not for me
                   </Button>
                   : <Button
                     bsStyle="primary"
-                    onClick={() => handleAddWish(_id)}
+                    onClick={() => handleAdd(_id, "wantPlay")}
                     block
                   >
-                    Add to my Wishlist
+                    Want to Play
+                  </Button> }
+              </td>
+              <td>
+                { wishGame ?
+                  <Button
+                    bsStyle="danger"
+                    onClick={() => handleRemove(_id, "wishlist")}
+                    block
+                  >
+                    Remove from Wishlist
+                  </Button>
+                  : <Button
+                    bsStyle="primary"
+                    onClick={() => handleAdd(_id, "wishlist")}
+                    block
+                  >
+                    Add to Wishlist
                   </Button> }
               </td>
               <td>
                 { ownsGame ?
                   <Button
                     bsStyle="danger"
-                    onClick={() => handleRemoveOwn(_id)}
+                    onClick={() => handleRemove(_id, "owns")}
                     block
                   >
-                    Remove from my shelf
+                    Remove from shelf
                   </Button>
                   : <Button
                     bsStyle="primary"
                     onClick={() => handleAddOwn(_id)}
                     block
                   >
-                    Add to my Shelf
+                    Add to Shelf
                   </Button> }
               </td>
             </tr>
@@ -174,11 +180,13 @@ export default withTracker(() => {
   const gamesArray = GamesCollection.find().fetch();
   
   const gamesArrayMap = gamesArray.map( (game) => {
+    const gamePlay = game ? game.wantPlay.indexOf( Meteor.userId() ) > -1 : false;
     const gameWished = game ? game.wishlist.indexOf( Meteor.userId() ) > -1 : false;
     const gameOwned = game ? game.owns.indexOf( Meteor.userId() ) > -1 : false;
     
     return {
       ...game,
+      wantsPlay: gamePlay ? true : false,
       wishGame: gameWished ? true : false,
       ownsGame: gameOwned ? true : false,
     };
