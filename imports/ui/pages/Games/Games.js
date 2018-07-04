@@ -102,23 +102,6 @@ const Games = ({
                 </Button>
               </td>
               <td>
-                { wantsPlay ?
-                  <Button
-                    bsStyle="danger"
-                    onClick={() => handleRemove(_id, "wantPlay")}
-                    block
-                  >
-                    Not for me
-                  </Button>
-                  : <Button
-                    bsStyle="primary"
-                    onClick={() => handleAdd(_id, "wantPlay")}
-                    block
-                  >
-                    Want to Play
-                  </Button> }
-              </td>
-              <td>
                 { wishGame ?
                   <Button
                     bsStyle="danger"
@@ -180,13 +163,11 @@ export default withTracker(() => {
   const gamesArray = GamesCollection.find().fetch();
   
   const gamesArrayMap = gamesArray.map( (game) => {
-    const gamePlay = game ? game.wantPlay.indexOf( Meteor.userId() ) > -1 : false;
     const gameWished = game ? game.wishlist.indexOf( Meteor.userId() ) > -1 : false;
     const gameOwned = game ? game.owns.indexOf( Meteor.userId() ) > -1 : false;
     
     return {
       ...game,
-      wantsPlay: gamePlay ? true : false,
       wishGame: gameWished ? true : false,
       ownsGame: gameOwned ? true : false,
     };
