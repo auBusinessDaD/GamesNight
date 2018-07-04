@@ -53,6 +53,15 @@ Games.schema = new SimpleSchema({
     type: String,
     label: 'An extract of the game.',
   },
+  wantPlay: {
+    type: Array,
+    label: 'People who want to play this game.',
+    optional: true,
+  },
+  'wantPlay.$': {
+    type: String,
+    regEx: SimpleSchema.RegEx.Id,
+  },
   wishlist: {
     type: Array,
     label: 'People who want this game.',
