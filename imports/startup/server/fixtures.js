@@ -16,6 +16,8 @@ const gamesSeed = userId => ({
   },
 });
 
+Roles.createRole('publisher');
+
 seeder(Meteor.users, {
   environments: ['development', 'staging'],
   noLimit: true,
@@ -45,7 +47,7 @@ seeder(Meteor.users, {
           last: faker.name.lastName(),
         },
       },
-      roles: ['user'],
+      roles: ['user', 'publisher'],
       data(userId) {
         return gamesSeed(userId);
       },
