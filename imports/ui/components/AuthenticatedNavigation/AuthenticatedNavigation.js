@@ -12,22 +12,27 @@ const AuthenticatedNavigation = ({ name, history, userId }) => (
         <NavItem eventKey={1} href="/games">All Games</NavItem>
       </LinkContainer>
       <LinkContainer to="/wishlist">
-        <NavItem eventKey={3} href="/wishlist">My Wishlist</NavItem>
+        <NavItem eventKey={2} href="/wishlist">My Wishlist</NavItem>
       </LinkContainer>
       <LinkContainer to="/mine">
-        <NavItem eventKey={2} href="/mine">My Games Shelf</NavItem>
+        <NavItem eventKey={3} href="/mine">My Games Shelf</NavItem>
       </LinkContainer>
-      <LinkContainer to="/game/manage">
-        <NavItem eventKey={4} href="/game/manage">Manage Games</NavItem>
-      </LinkContainer>
-        {Roles.userIsInRole(userId, 'admin') ? <NavDropdown eventKey={5} title="Admin" id="admin-nav-dropdown">
-          <LinkContainer exact to="/admin/users">
-            <NavItem eventKey={5.1} href="/admin/users">Users</NavItem>
-          </LinkContainer>
-          <LinkContainer exact to="/admin/users/settings">
-            <NavItem eventKey={5.2} href="/admin/users/settings">User Settings</NavItem>
-          </LinkContainer>
-        </NavDropdown> : ''}
+      {Roles.userIsInRole(userId, 'publisher') ? <NavDropdown eventKey={4} title="Publisher" id="publisher-nav-dropdown">
+        <LinkContainer to="/game/manage">
+          <NavItem eventKey={4.1} href="/game/manage">Manage Games</NavItem>
+        </LinkContainer>
+        <LinkContainer exact to="/game/manage/new">
+          <NavItem eventKey={4.2} href="/game/manage/new">Add Game</NavItem>
+        </LinkContainer>
+      </NavDropdown> : ''}
+      {Roles.userIsInRole(userId, 'admin') ? <NavDropdown eventKey={5} title="Admin" id="admin-nav-dropdown">
+        <LinkContainer exact to="/admin/users">
+          <NavItem eventKey={5.1} href="/admin/users">Users</NavItem>
+        </LinkContainer>
+        <LinkContainer exact to="/admin/users/settings">
+          <NavItem eventKey={5.2} href="/admin/users/settings">User Settings</NavItem>
+        </LinkContainer>
+      </NavDropdown> : ''}
     </Nav>
     <Nav pullRight>
       <NavDropdown eventKey={6} title={name} id="user-nav-dropdown">
