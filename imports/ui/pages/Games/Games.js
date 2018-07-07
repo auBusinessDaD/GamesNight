@@ -17,7 +17,7 @@ const StyledGames = styled.div`
   }
 `;
 
-const handleAddOwn = (gameId) => {//should we remove from wishlist if they have marked as owned?
+const handleAddOwn = (gameId) => {
   let addOwn = { _id: gameId, field: "owns" };
   Meteor.call('games.addFieldArray', addOwn, (error) => {
     if (error) {
