@@ -62,7 +62,7 @@ class AdminUserProfile extends React.Component {
     const isPasswordUser = (existingUser && existingUser.service === 'password') || !existingUser;
     const method = existingUser ? 'edit' : 'create';
     const password = isPasswordUser ? this.password.value : null;
-    const roleCheckboxes = document.querySelectorAll('[name="role"]:checked');
+    const roleCheckboxes = game.querySelectorAll('[name="role"]:checked');
     const roles = [];
     [].forEach.call(roleCheckboxes, (role) => { roles.push(role.value); });
 
