@@ -97,5 +97,5 @@ Meteor.startup(() => hydrate(
       </BrowserRouter>
     </Provider>
   </ThemeProvider>,
-  game.getElementById('react-root'),
+  document.getElementById('react-root'),
 ));
