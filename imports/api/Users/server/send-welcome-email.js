@@ -20,7 +20,7 @@ export default (oauthUser) => {
       subtitle: `Here's how to get started with ${productName}.`,
       productName,
       firstName,
-      welcomeUrl: Meteor.absoluteUrl('documents'), // e.g., returns http://localhost:3000/documents
+      welcomeUrl: Meteor.absoluteUrl('games'), // e.g., returns http://localhost:3000/games
     },
   })
     .catch((error) => {
