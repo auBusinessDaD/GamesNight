@@ -28,14 +28,14 @@ Games.schema = new SimpleSchema({
   },
   createdAt: {
     type: String,
-    label: 'The date this document was created.',
+    label: 'The date this game was created.',
     autoValue() {
       if (this.isInsert) return (new Date()).toISOString();
     },
   },
   updatedAt: {
     type: String,
-    label: 'The date this document was last updated.',
+    label: 'The date this game was last updated.',
     autoValue() {
       if (this.isInsert || this.isUpdate) return (new Date()).toISOString();
     },
