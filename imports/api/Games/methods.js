@@ -28,7 +28,6 @@ Meteor.methods({
     }
   },
   'games.insert': function gamesInsert(gam) {
-    //need to check if the user can actually create games or not
     check(gam, {
       title: String,
       description: String,
@@ -48,7 +47,11 @@ Meteor.methods({
     gam[ 'wishlist' ] = new Array();
     
     try {
-      return Games.insert( gam );
+      if (Roles.userIsInRole(this.userId, ['admin','publisher'])) {
+        return Games.insert( gam );
+      }
+
+      throw new Meteor.Error('403', 'Sorry, you need to be a publisher to do this.');
     } catch (exception) {
       handleMethodException(exception);
     }
@@ -69,7 +72,8 @@ Meteor.methods({
       artists: String,
       publisher: String,
     });
-
+    
+    //need to check if this user can edit this game!!
     try {
       const gameId = gam._id;
       const gamToUpdate = Games.findOne(gameId, { fields: { owner: 1 } });
@@ -120,7 +124,8 @@ Meteor.methods({
   },
   'games.remove': function gamesRemove(gameId) {
     check(gameId, String);
-
+    
+    //need to check if this user can delete this game!!
     try {
       const gamToRemove = Games.findOne(gameId, { fields: { owner: 1 } });
 
