@@ -19,7 +19,7 @@ const gamesSeed = userId => ({
 //Roles.createRole('publisher');
 
 seeder(Meteor.users, {
-  environments: ['development', 'staging'],
+  environments: ['staging'],//['development', 'staging'],
   noLimit: true,
   data: [{
     email: 'admin@admin.com',
