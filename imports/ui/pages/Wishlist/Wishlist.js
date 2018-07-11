@@ -17,7 +17,7 @@ const StyledGames = styled.div`
   }
 `;
 
-const handleAddOwn = (gameId) => {//should we remove from wishlist if they have marked as owned?
+const handleAdd = (gameId) => {
   let addOwn = { _id: gameId, field: "owns" };
   Meteor.call('games.addFieldArray', addOwn, (error) => {
     if (error) {
@@ -35,7 +35,7 @@ const handleAddOwn = (gameId) => {//should we remove from wishlist if they have 
   });
 };
 
-const handleRemoveWish = (gameId) => {
+const handleRemove = (gameId) => {
   if (confirm('Are you sure? This will remove this game from your wishlist!')) {
     let removeOwn = { _id: gameId, field: "wishlist" };
     Meteor.call('games.removeFieldArray', removeOwn, (error) => {
@@ -89,7 +89,7 @@ const Games = ({
               <td>
                   <Button
                     bsStyle="primary"
-                    onClick={() => handleAddOwn(_id)}
+                    onClick={() => handleAdd(_id)}
                     block
                   >
                     Add to My Shelf
@@ -98,7 +98,7 @@ const Games = ({
               <td>
                 <Button
                   bsStyle="danger"
-                  onClick={() => handleRemoveWish(_id)}
+                  onClick={() => handleRemove(_id)}
                   block
                 >
                   Remove
