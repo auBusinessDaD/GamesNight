@@ -28,7 +28,7 @@ const handleAddOwn = (gameId) => {
         if (error) {
           Bert.alert(error.reason, 'danger');
         } else {
-          Bert.alert('Game removed from your Wishlist and added to your shelf!', 'success');
+          Bert.alert('Your wish, our command! So it be done!', 'success');
         }
       });
     }
