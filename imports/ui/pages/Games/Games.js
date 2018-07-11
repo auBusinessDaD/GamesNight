@@ -41,7 +41,7 @@ const handleAdd = (gameId, gameField) => {
     if (error) {
       Bert.alert(error.reason, 'danger');
     } else {
-      Bert.alert('Your wish our command! So it be done!', 'success');
+      Bert.alert('Your wish, our command! So it be done!', 'success');
     }
   });
 };
