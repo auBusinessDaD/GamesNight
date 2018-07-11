@@ -28,7 +28,7 @@ const handleAdd = (gameId, fieldName) => {
         if (error) {
           Bert.alert(error.reason, 'danger');
         } else {
-          Bert.alert('Game removed from your Wishlist and added to your shelf!', 'success');
+          Bert.alert('Your wish, our command! So it be done!', 'success');
         }
       });
     }
@@ -36,13 +36,13 @@ const handleAdd = (gameId, fieldName) => {
 };
 
 const handleRemove = (gameId, fieldName) => {
-  if (confirm('Are you sure? This will remove this game from your wishlist!')) {
+  if (confirm('Are you sure? Like, REALLY sure!?!')) {
     let removeOwn = { _id: gameId, field: fieldName };
     Meteor.call('games.removeFieldArray', removeOwn, (error) => {
       if (error) {
         Bert.alert(error.reason, 'danger');
       } else {
-        Bert.alert('Game removed!', 'success');
+        Bert.alert('Your wish, our command! So it be done!', 'success');
       }
     });
   }
