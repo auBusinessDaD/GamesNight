@@ -172,7 +172,7 @@ export default withTracker(() => {
       playGame: gamePlay ? true : false,
       ownsGame: gameOwned ? true : false,
     };
-} );
+  } );
   
   return {
     loading: !subscription.ready(),
