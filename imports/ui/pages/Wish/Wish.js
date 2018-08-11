@@ -5,7 +5,7 @@ import Page from '../Page/Page';
 const { productName } = Meteor.settings.public;
 
 const content = `
-Here at { productName }, we are on a journey to making a robust and modern management tool for finding and managing your tabletop/board games. This is your opportunity to influence that direction.
+Here at ${productName} we are on a journey to making a robust and modern management tool for finding and managing your tabletop/board games. This is your opportunity to influence that direction.
 
 Complete the form below to let us know what you like to see in this web application.
 `;
