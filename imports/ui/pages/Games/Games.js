@@ -19,6 +19,10 @@ const StyledGames = styled.div`
   .clickableText {
     cursor: pointer;
   }
+  
+  .sortableColumn {
+    cursor: alias;
+  }
 `;
 
 const handleAddOwn = (gameId) => {
@@ -64,6 +68,50 @@ const handleRemove = (gameId, gameField) => {
   }
 };
 
+const sortTable = (tableHeader) => {
+	let thisTable, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+	thisTable = $("#gameTable");
+	switching = true;
+  
+	dir = "asc";
+  
+	while (switching) {
+		switching = false;
+		rows = thisTable.rows;
+    
+		for (i = 1; i < (rows.length - 1); i++) {
+			shouldSwitch = false;
+      
+			x = rows[i].getElementsByTagName("TD")[tableHeader];
+			y = rows[i + 1].getElementsByTagName("TD")[tableHeader];
+      
+			if (dir == "asc") {
+				if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+					shouldSwitch = true;
+					break;
+				}
+			} else if (dir == "desc") {
+				if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+					shouldSwitch = true;
+					break;
+				}
+			}
+		};
+    
+		if (shouldSwitch) {
+			rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+			switching = true;
+      
+			switchcount ++;
+		} else {
+			if (switchcount == 0 && dir == "asc") {
+				dir = "desc";
+				switching = true;
+			}
+		}
+	};
+};
+
 const Games = ({
   loading, games, match, history,
 }) => (!loading ? (
@@ -72,14 +120,14 @@ const Games = ({
       <h4 className="pull-left">Games</h4>
     </div>
     {games.length ?
-      <Table responsive>
+      <Table id="gameTable" responsive>
         <thead>
           <tr>
-            <th>Title</th>
-            <th>Edition</th>
-            <th>Year Published</th>
-            <th>Publisher</th>
-            <th>RRP</th>
+            <th className="sortableColumn" onClick={() => sortTable(0)}>Title</th>
+            <th className="sortableColumn" onClick={() => sortTable(1)}>Edition</th>
+            <th className="sortableColumn" onClick={() => sortTable(2)}>Year Published</th>
+            <th className="sortableColumn" onClick={() => sortTable(3)}>Publisher</th>
+            <th className="sortableColumn" onClick={() => sortTable(4)}>RRP</th>
             <th />
             <th />
             <th />
@@ -91,7 +139,7 @@ const Games = ({
             _id, title, rrp, edition, pubYear, publisher, playGame, wishGame, ownsGame
           }) => (
             <tr key={_id}>
-              <td><span class="clickableText" onClick={() => history.push(`${match.url}/${_id}`)}>{title}</span></td>
+              <td><span className="clickableText" onClick={() => history.push(`${match.url}/${_id}`)}>{title}</span></td>
               <td>{edition}</td>
               <td>{pubYear}</td>
               <td>{publisher}</td>
