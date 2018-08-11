@@ -15,6 +15,10 @@ const StyledGames = styled.div`
   table tbody tr td {
     vertical-align: middle;
   }
+  
+  .clickableText {
+    cursor: pointer;
+  }
 `;
 
 const handleAdd = (gameId) => {
@@ -73,7 +77,7 @@ const Games = ({
             _id, title, rrp, edition, pubYear
           }) => (
             <tr key={_id}>
-              <td>{title}</td>
+              <td><span class="clickableText" onClick={() => history.push(`/games/${_id}`)}>{title}</span></td>
               <td>{edition}</td>
               <td>{pubYear}</td>
               <td>{rrp}</td>
@@ -83,7 +87,7 @@ const Games = ({
                   onClick={() => history.push(`/games/${_id}`)}
                   block
                 >
-                  View
+                  **REPLACE WITH WTP**
                 </Button>
               </td>
               <td>
