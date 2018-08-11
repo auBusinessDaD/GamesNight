@@ -127,33 +127,13 @@ const sortTable = (tableHeader, sortType) => {
   };
 };
 
-const searchTable = (fieldID, tableHeader) => {
-  let input, filter, thisTable, rows, td, i;
-  input = document.getElementById(fieldID);
-  filter = input.value.toUpperCase();
-  thisTable = document.getElementById("gameTable");
-  rows = thisTable.getElementsByTagName("TR");
-
-  for (i = 0; i < rows.length; i++) {
-    td = rows[i].getElementsByTagName("TD")[tableHeader];
-    
-    if (td) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-        rows[i].style.display = "";
-      } else {
-        rows[i].style.display = "none";
-      }
-    }
-  }
-}
-
 const Games = ({
   loading, games, match, history,
 }) => (!loading ? (
   <StyledGames>
     <div className="page-header clearfix">
       <h4 className="pull-left">Games</h4>
-      <SearchInput {"Type game title here...", {() => searchTable("searchGame", 0)} } />
+      <SearchInput {"Type game title here..." } />
     </div>
     {games.length ?
       <Table id="gameTable" responsive>
