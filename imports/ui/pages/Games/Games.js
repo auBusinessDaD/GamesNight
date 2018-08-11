@@ -97,13 +97,21 @@ const Games = ({
               <td>{publisher}</td>
               <td>{rrp}</td>
               <td>
-                <Button
-                  bsStyle="primary"
-                  onClick={() => history.push(`${match.url}/${_id}`)}
-                  block
-                >
-                  **Itching to Play**
-                </Button>
+                { playGame ?
+                  <Button
+                    bsStyle="danger"
+                    onClick={() => handleRemove(_id, "wantPlay")}
+                    block
+                  >
+                    Satiated Desire
+                  </Button>
+                  : <Button
+                    bsStyle="primary"
+                    onClick={() => handleAdd(_id, "wantPlay")}
+                    block
+                  >
+                    Itching To Play
+                  </Button> }
               </td>
               <td>
                 { wishGame ?
@@ -167,11 +175,13 @@ export default withTracker(() => {
   const gamesArray = GamesCollection.find().fetch();
   
   const gamesArrayMap = gamesArray.map( (game) => {
+    const gamePlay = game ? game.wantPlay.indexOf( Meteor.userId() ) > -1 : false;
     const gameWished = game ? game.wishlist.indexOf( Meteor.userId() ) > -1 : false;
     const gameOwned = game ? game.owns.indexOf( Meteor.userId() ) > -1 : false;
     
     return {
       ...game,
+      playGame: gamePlay ? true : false,
       wishGame: gameWished ? true : false,
       ownsGame: gameOwned ? true : false,
     };
