@@ -77,9 +77,7 @@ const Games = ({
           <tr>
             <th>Title</th>
             <th>Edition</th>
-            <th>Year Published</th>
-            <th>Publisher</th>
-            <th>RRP</th>
+            <th>Friends</th>
             <th />
             <th />
             <th />
@@ -93,9 +91,7 @@ const Games = ({
             <tr key={_id}>
               <td><span class="clickableText" onClick={() => history.push(`${match.url}/${_id}`)}>{title}</span></td>
               <td>{edition}</td>
-              <td>{pubYear}</td>
-              <td>{publisher}</td>
-              <td>{rrp}</td>
+              <td>show friends with game?</td>
               <td>
                 { wishGame ?
                   <Button
