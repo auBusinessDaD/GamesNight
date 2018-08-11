@@ -115,7 +115,7 @@ const Games = ({
       <h4 className="pull-left">My Games</h4>
     </div>
     {games.length ?
-      <Table responsive>
+      <Table id="gameTable" responsive>
         <thead>
           <tr>
             <th className="sortableColumn" onClick={() => sortTable(0, "text")}>Title</th>
