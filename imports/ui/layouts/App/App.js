@@ -24,6 +24,7 @@ import NewGame from '../../pages/Games/Manage/NewGame';
 import EditGame from '../../pages/Games/Manage/EditGame';
 import MyGames from '../../pages/Mine/Mine';
 import WishGames from '../../pages/Wishlist/Wishlist';
+import ItchList from '../../pages/Playlist/Playlist';
 import Signup from '../../pages/Signup/Signup';
 import Login from '../../pages/Login/Login';
 import Logout from '../../pages/Logout/Logout';
@@ -111,6 +112,7 @@ class App extends React.Component {
             <Route exact path="/games/:_id" component={ViewGame} />
             <Authenticated exact path="/mine" component={MyGames} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
             <Authenticated exact path="/wishlist" component={WishGames} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
+	    <Authenticated exact path="/playlist" component={ItchList} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
             <Authenticated exact path="/game/manage" component={ManageGames} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
             <Authenticated exact path="/game/manage/new" component={NewGame} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
             <Route exact path="/game/manage/:_id" component={ManageGame} />
