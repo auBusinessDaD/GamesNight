@@ -10,6 +10,7 @@ import GamesCollection from '../../../api/Games/Games';
 import { timeago, monthDayYearAtTime } from '../../../modules/dates';
 import Loading from '../../components/Loading/Loading';
 import BlankState from '../../components/BlankState/BlankState';
+import SearchInput from '../../components/SearchInput/SearchInput';
 
 const StyledGames = styled.div`
   table tbody tr td {
@@ -113,6 +114,7 @@ const Games = ({
   <StyledGames>
     <div className="page-header clearfix">
       <h4 className="pull-left">My Games</h4>
+      <SearchInput />
     </div>
     {games.length ?
       <Table id="gameTable" responsive>
