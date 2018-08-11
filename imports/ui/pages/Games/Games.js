@@ -102,7 +102,7 @@ const Games = ({
                   onClick={() => history.push(`${match.url}/${_id}`)}
                   block
                 >
-                  View
+                  **REPLACE WITH WTP**
                 </Button>
               </td>
               <td>
