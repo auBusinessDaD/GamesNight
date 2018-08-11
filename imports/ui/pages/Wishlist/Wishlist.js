@@ -87,7 +87,7 @@ const Games = ({
                   onClick={() => history.push(`/games/${_id}`)}
                   block
                 >
-                  **REPLACE WITH WTP**
+                  **Itching to Play**
                 </Button>
               </td>
               <td>
