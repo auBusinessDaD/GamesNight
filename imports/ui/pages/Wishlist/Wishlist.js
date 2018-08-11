@@ -105,7 +105,7 @@ const Games = ({
                   onClick={() => handleRemove(_id)}
                   block
                 >
-                  Remove
+                  X
                 </Button>
               </td>
             </tr>
