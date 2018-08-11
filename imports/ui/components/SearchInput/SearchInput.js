@@ -46,7 +46,7 @@ const SearchInput = ({ placeholder }) => (
       type="text"
       name="search"
       className="form-control"
-      placeholder={placeholder}
+      placeholder="Type game title here..."
       onKeyUp={() => searchTable(0)}
     />
   </StyledSearchInput>
