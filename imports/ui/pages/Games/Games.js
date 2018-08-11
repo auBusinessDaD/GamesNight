@@ -15,6 +15,10 @@ const StyledGames = styled.div`
   table tbody tr td {
     vertical-align: middle;
   }
+  
+  .clickableText {
+    cursor: pointer;
+  }
 `;
 
 const handleAddOwn = (gameId) => {
@@ -87,7 +91,7 @@ const Games = ({
             _id, title, rrp, edition, pubYear, publisher, wishGame, ownsGame
           }) => (
             <tr key={_id}>
-              <td>{title}</td>
+              <td><span class="clickableText" onClick={() => history.push(`${match.url}/${_id}`)}>{title}</span></td>
               <td>{edition}</td>
               <td>{pubYear}</td>
               <td>{publisher}</td>
