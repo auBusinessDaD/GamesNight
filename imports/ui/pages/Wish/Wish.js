@@ -7,7 +7,7 @@ const { productName } = Meteor.settings.public;
 const content = `
 Here at ${productName} we are on a journey to making a robust and modern management tool for finding and managing your tabletop/board games. This is your opportunity to influence that direction.
 
-Complete the form below to let us know what you like to see in this web application.
+Complete the form below to let us know what you like to see in this web application. You can also see other wishes made by fellow gamers (or even track your wish) from our Trello board - https://trello.com/b/B69AEPcS.
 `;
 
 const Wish = () => (
