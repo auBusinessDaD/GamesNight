@@ -10,7 +10,7 @@ import GamesCollection from '../../../api/Games/Games';
 import { timeago, monthDayYearAtTime } from '../../../modules/dates';
 import Loading from '../../components/Loading/Loading';
 import BlankState from '../../components/BlankState/BlankState';
-import SortFilterSearch from '../../components/SortFilterSearch/SortFilterSearch';
+import sortTable from '../../components/SortFilterSearch/SortFilterSearch';
 import SearchInput from '../../components/SearchInput/SearchInput';
 
 const StyledGames = styled.div`
