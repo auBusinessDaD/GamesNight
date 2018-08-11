@@ -20,15 +20,26 @@ const StyledGames = styled.div`
     cursor: pointer;
   }
 `;
+const handleAdd = (gameId, gameField) => {
+  let addItem = { _id: gameId, field: gameField };
+  Meteor.call('games.addFieldArray', addItem, (error) => {
+    if (error) {
+      Bert.alert(error.reason, 'danger');
+    } else {
+      Bert.alert('Your wish, our command! So it be done!', 'success');
+    }
+  });
+};
 
-const handleRemoveOwn = (gameId) => {
-  if (confirm('Are you sure? This will remove this game from your shelf!')) {
-    let removeOwn = { _id: gameId, field: "owns" };
-    Meteor.call('games.removeFieldArray', removeOwn, (error) => {
+const handleRemove = (gameId, gameField) => {
+  let remItem = { _id: gameId, field: gameField };
+  
+  if (confirm('Are you sure? Like, REALLY sure!?!')) {
+    Meteor.call('games.removeFieldArray', remItem, (error) => {
       if (error) {
         Bert.alert(error.reason, 'danger');
       } else {
-        Bert.alert('Game removed!', 'success');
+        Bert.alert('Your wish our command! So it be done!', 'success');
       }
     });
   }
@@ -54,7 +65,7 @@ const Games = ({
         </thead>
         <tbody>
           {games.map(({
-            _id, title,
+            _id, title, playGame
           }) => (
             <tr key={_id}>
               <td><span class="clickableText" onClick={() => history.push(`/games/${_id}`)}>{title}</span></td>
@@ -62,25 +73,33 @@ const Games = ({
               <td>
                 <Button
                   bsStyle="primary"
-                  onClick={() => history.push(`/games/${_id}`)}
+                  onClick={() => history.push('/games/${_id}')}
                   block
                 >
                   **Loan To**
                 </Button>
               </td>
               <td>
-                <Button
-                  bsStyle="primary"
-                  onClick={() => history.push(`/games/${_id}`)}
-                  block
-                >
-                  **Itching to Play**
-                </Button>
+                { playGame ?
+                  <Button
+                    bsStyle="danger"
+                    onClick={() => handleRemove(_id, "wantPlay")}
+                    block
+                  >
+                    Satiated Desire
+                  </Button>
+                  : <Button
+                    bsStyle="primary"
+                    onClick={() => handleAdd(_id, "wantPlay")}
+                    block
+                  >
+                    Itching To Play
+                </Button> }
               </td>
               <td>
                 <Button
                   bsStyle="danger"
-                  onClick={() => handleRemoveOwn(_id)}
+                  onClick={() => handleRemove(_id, "owns")}
                   block
                 >
                   X
@@ -95,7 +114,7 @@ const Games = ({
         subtitle="Add some games to your collection below."
         action={{
           style: 'success',
-          onClick: () => history.push(`/games`),
+          onClick: () => history.push('/games'),
           label: 'Find Some Games Here',
         }}
       />}
@@ -111,8 +130,19 @@ Games.propTypes = {
 
 export default withTracker(() => {
   const subscription = Meteor.subscribe('games');
+  const gamesArray = GamesCollection.find({ owns: Meteor.userId() }).fetch();
+  
+  const gamesArrayMap = gamesArray.map( (game) => {
+    const gamePlay = game ? game.wantPlay.indexOf( Meteor.userId() ) > -1 : false;
+    
+    return {
+      ...game,
+      playGame: gamePlay ? true : false,
+    };
+  } );
+  
   return {
     loading: !subscription.ready(),
-    games: GamesCollection.find({ owns: Meteor.userId() }).fetch(),
+    games: gamesArrayMap,
   };
 })(Games);
