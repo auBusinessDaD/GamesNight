@@ -26,9 +26,10 @@ const StyledFooter = styled.div`
 
   ul li {
     float: left;
+    margin-right: 15px;
 
-    &:first-child {
-      margin-right: 15px;
+    &:last-child {
+      margin-right: 0px;
     }
 
     a {
@@ -44,8 +45,12 @@ const StyledFooter = styled.div`
   }
 
   @media screen and (min-width: 768px) {
-    ul li:first-child {
+    ul li {
       margin-right: 30px;
+      
+      &:last-child {
+        margin-right: 0px;
+      }
     }
   }
 `;
