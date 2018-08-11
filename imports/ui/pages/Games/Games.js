@@ -133,7 +133,7 @@ const Games = ({
   <StyledGames>
     <div className="page-header clearfix">
       <h4 className="pull-left">Games</h4>
-      <SearchInput {"Type game title here..."} />
+      <SearchInput />
     </div>
     {games.length ?
       <Table id="gameTable" responsive>
