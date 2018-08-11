@@ -15,6 +15,10 @@ const StyledGames = styled.div`
   table tbody tr td {
     vertical-align: middle;
   }
+  
+  .clickableText {
+    cursor: pointer;
+  }
 `;
 
 const Games = ({
@@ -33,7 +37,6 @@ const Games = ({
             <th>Last Updated</th>
             <th>Created</th>
             <th />
-            <th />
           </tr>
         </thead>
         <tbody>
@@ -41,18 +44,9 @@ const Games = ({
             _id, title, createdAt, updatedAt,
           }) => (
             <tr key={_id}>
-              <td>{title}</td>
+              <td><span class="clickableText" onClick={() => history.push(`${match.url}/${_id}`)}>{title}</span></td>
               <td>{timeago(updatedAt)}</td>
               <td>{monthDayYearAtTime(createdAt)}</td>
-              <td>
-                <Button
-                  bsStyle="primary"
-                  onClick={() => history.push(`${match.url}/${_id}`)}
-                  block
-                >
-                  View
-                </Button>
-              </td>
               <td>
                 <Button
                   bsStyle="primary"
