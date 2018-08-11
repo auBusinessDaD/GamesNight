@@ -15,6 +15,10 @@ const StyledGames = styled.div`
   table tbody tr td {
     vertical-align: middle;
   }
+  
+  .clickableText {
+    cursor: pointer;
+  }
 `;
 
 const handleRemoveOwn = (gameId) => {
@@ -51,14 +55,14 @@ const Games = ({
             _id, title,
           }) => (
             <tr key={_id}>
-              <td>{title}</td>
+              <td><span class="clickableText" onClick={() => history.push(`/games/${_id}`)}>{title}</span></td>
               <td>
                 <Button
                   bsStyle="primary"
                   onClick={() => history.push(`/games/${_id}`)}
                   block
                 >
-                  View
+                  **REPLACE WITH WTP**
                 </Button>
               </td>
               <td>
