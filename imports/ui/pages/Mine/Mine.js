@@ -68,7 +68,7 @@ const Games = ({
             _id, title, playGame
           }) => (
             <tr key={_id}>
-              <td><span class="clickableText" onClick={() => history.push(`/games/${_id}`)}>{title}</span></td>
+              <td><span className="clickableText" onClick={() => history.push(`/games/${_id}`)}>{title}</span></td>
               <td>On Shelf OR Loaned to XXX</td>
               <td>
                 <Button
