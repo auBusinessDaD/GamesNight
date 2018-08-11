@@ -90,7 +90,7 @@ const Games = ({
             _id, title, rrp, edition, pubYear, publisher, wishGame, ownsGame
           }) => (
             <tr key={_id}>
-              <td><span class="clickableText" onClick={() => history.push(`${match.url}/${_id}`)}>{title}</span></td>
+              <td><span className="clickableText" onClick={() => history.push(`${match.url}/${_id}`)}>{title}</span></td>
               <td>{edition}</td>
               <td>friends with game?</td>
               <td>friends who WTP</td>
