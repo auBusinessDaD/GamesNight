@@ -44,7 +44,7 @@ const Games = ({
             _id, title, createdAt, updatedAt,
           }) => (
             <tr key={_id}>
-              <td><span class="clickableText" onClick={() => history.push(`${match.url}/${_id}`)}>{title}</span></td>
+              <td><span className="clickableText" onClick={() => history.push(`${match.url}/${_id}`)}>{title}</span></td>
               <td>{timeago(updatedAt)}</td>
               <td>{monthDayYearAtTime(createdAt)}</td>
               <td>
