@@ -49,6 +49,7 @@ const Games = ({
             <th />
             <th />
             <th />
+            <th />
           </tr>
         </thead>
         <tbody>
@@ -64,7 +65,16 @@ const Games = ({
                   onClick={() => history.push(`/games/${_id}`)}
                   block
                 >
-                  **REPLACE WITH WTP**
+                  **Loan To**
+                </Button>
+              </td>
+              <td>
+                <Button
+                  bsStyle="primary"
+                  onClick={() => history.push(`/games/${_id}`)}
+                  block
+                >
+                  **Itching to Play**
                 </Button>
               </td>
               <td>
