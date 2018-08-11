@@ -43,8 +43,13 @@ Meteor.methods({
       publisher: String,
     });
     
-    gam['owns'] = new Array();
+    gam[ 'wantPlay' ] = new Array();
     gam[ 'wishlist' ] = new Array();
+    gam[ 'owns' ] = new Array();
+    
+    gam[ 'categories' ] = new Array();
+    gam[ 'gameMech' ] = new Array();
+    gam[ 'type' ] = new Array();
     
     try {
       if (Roles.userIsInRole(this.userId, ['admin','publisher'])) {
