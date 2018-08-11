@@ -10,6 +10,8 @@ import GamesCollection from '../../../api/Games/Games';
 import { timeago, monthDayYearAtTime } from '../../../modules/dates';
 import Loading from '../../components/Loading/Loading';
 import BlankState from '../../components/BlankState/BlankState';
+import SortFilterSearch from '../../components/SortFilterSearch/SortFilterSearch';
+import SearchInput from '../../components/SearchInput/SearchInput';
 
 const StyledGames = styled.div`
   table tbody tr td {
@@ -66,64 +68,6 @@ const handleRemove = (gameId, gameField) => {
       }
     });
   }
-};
-
-const sortTable = (tableHeader, sortType) => {
-  let thisTable, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-  thisTable = document.getElementById("gameTable");
-  switching = true;
-  
-  dir = "asc";
-  
-  while (switching) {
-    switching = false;
-    rows = thisTable.rows;
-    
-    for (i = 1; i < (rows.length - 1); i++) {
-      shouldSwitch = false;
-      
-      x = rows[i].getElementsByTagName("TD")[tableHeader];
-      y = rows[i + 1].getElementsByTagName("TD")[tableHeader];
-      
-      if (dir == "asc") {
-        if (sortType == "text") {
-          if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-            shouldSwitch = true;
-            break;
-          }
-        } else if (sortType == "number") {
-          if (Number(x.innerHTML) > Number(y.innerHTML)) {
-            shouldSwitch = true;
-            break;
-          }
-        }
-      } else if (dir == "desc") {
-        if (sortType == "text") {
-          if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-            shouldSwitch = true;
-            break;
-          }
-        } else if (sortType == "number") {
-          if (Number(x.innerHTML) < Number(y.innerHTML)) {
-            shouldSwitch = true;
-            break;
-          }
-        }
-      }
-    };
-    
-    if (shouldSwitch) {
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true;
-      
-      switchcount ++;
-    } else {
-      if (switchcount == 0 && dir == "asc") {
-        dir = "desc";
-        switching = true;
-      }
-    }
-  };
 };
 
 const Games = ({
