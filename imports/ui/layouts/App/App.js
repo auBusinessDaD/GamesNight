@@ -123,6 +123,7 @@ class App extends React.Component {
             <Route name="reset-password" path="/reset-password/:token" component={ResetPassword} />
             <Route name="terms" path="/terms" component={Terms} />
             <Route name="privacy" path="/privacy" component={Privacy} />
+	    <Route name="wish" path="/wish" component={Wish} />
             <Route name="examplePage" path="/example-page" component={ExamplePage} />
             <Authorized exact allowedRoles={['admin']} path="/admin/users" pathAfterFailure="/" component={AdminUsers} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
             <Authorized exact allowedRoles={['admin']} path="/admin/users/settings" pathAfterFailure="/" component={AdminUserSettings} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
