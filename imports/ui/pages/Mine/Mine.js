@@ -119,7 +119,7 @@ const Games = ({
         <thead>
           <tr>
             <th className="sortableColumn" onClick={() => sortTable(0, "text")}>Title</th>
-            <th />
+            <th className="sortableColumn" onClick={() => sortTable(1, "text")}>Location</th>
             <th />
             <th />
             <th />
