@@ -40,11 +40,12 @@ const searchTable = (tableHeader) => {
 }
 
 const SearchInput = ({ placeholder }) => (
-  <StyledSearchInput id="searchGame" className="SearchInput">
+  <StyledSearchInput className="SearchInput">
     <Icon iconStyle="solid" icon="search" />
     <input
       type="text"
       name="search"
+      id="searchGame"
       className="form-control"
       placeholder="Type game title here..."
       onKeyUp={() => searchTable(0)}
@@ -58,7 +59,6 @@ SearchInput.defaultProps = {
 
 SearchInput.propTypes = {
   placeholder: PropTypes.string,
-  onKeyUp: PropTypes.func.isRequired,
 };
 
 export default SearchInput;
