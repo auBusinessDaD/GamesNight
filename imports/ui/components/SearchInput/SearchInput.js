@@ -18,7 +18,28 @@ const StyledSearchInput = styled.div`
   }
 `;
 
-const SearchInput = ({ placeholder, onKeyUp }) => (
+
+const searchTable = (tableHeader) => {
+  let input, filter, thisTable, rows, td, i;
+  input = document.getElementById("searchGame");
+  filter = input.value.toUpperCase();
+  thisTable = document.getElementById("gameTable");
+  rows = thisTable.getElementsByTagName("TR");
+
+  for (i = 0; i < rows.length; i++) {
+    td = rows[i].getElementsByTagName("TD")[tableHeader];
+    
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        rows[i].style.display = "";
+      } else {
+        rows[i].style.display = "none";
+      }
+    }
+  }
+}
+
+const SearchInput = ({ placeholder }) => (
   <StyledSearchInput id="searchGame" className="SearchInput">
     <Icon iconStyle="solid" icon="search" />
     <input
@@ -26,7 +47,7 @@ const SearchInput = ({ placeholder, onKeyUp }) => (
       name="search"
       className="form-control"
       placeholder={placeholder}
-      onKeyUp={onKeyUp}
+      onKeyUp={() => searchTable(0)}
     />
   </StyledSearchInput>
 );
