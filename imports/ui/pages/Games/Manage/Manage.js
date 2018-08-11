@@ -92,7 +92,7 @@ const Games = ({
       <Link className="btn btn-success pull-right" to={`${match.url}/new`}>Add Game</Link>
     </div>
     {games.length ?
-      <Table responsive>
+      <Table id="gameTable" responsive>
         <thead>
           <tr>
             <th className="sortableColumn" onClick={() => sortTable(0, "text")}>Title</th>
