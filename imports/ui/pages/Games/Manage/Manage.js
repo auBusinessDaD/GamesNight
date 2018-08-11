@@ -13,6 +13,10 @@ import BlankState from '../../../components/BlankState/BlankState';
 import SearchInput from '../../../components/SearchInput/SearchInput';
 
 const StyledGames = styled.div`
+  .page-header > a.btn {
+    margin-right: 15px;
+  }
+  
   table tbody tr td {
     vertical-align: middle;
   }
@@ -91,7 +95,7 @@ const Games = ({
     <div className="page-header clearfix">
       <h4 className="pull-left">Games</h4>
       <SearchInput />
-      <Link className="btn btn-success pull-right" to={`${match.url}/new`}>Add Game</Link>
+      <Link className="btn btn-success pull-right hidden-xs" to={`${match.url}/new`}>Add Game</Link>
     </div>
     {games.length ?
       <Table id="gameTable" responsive>
