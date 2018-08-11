@@ -102,7 +102,7 @@ const Games = ({
                   onClick={() => history.push(`${match.url}/${_id}`)}
                   block
                 >
-                  **REPLACE WITH WTP**
+                  **Itching to Play**
                 </Button>
               </td>
               <td>
