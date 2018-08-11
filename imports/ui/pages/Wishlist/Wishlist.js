@@ -86,7 +86,7 @@ const Games = ({
         </thead>
         <tbody>
           {games.map(({
-            _id, title, rrp, edition, pubYear
+            _id, title, rrp, edition, pubYear, playGame, ownsGame
           }) => (
             <tr key={_id}>
               <td><span class="clickableText" onClick={() => history.push(`/games/${_id}`)}>{title}</span></td>
@@ -145,7 +145,7 @@ const Games = ({
         subtitle="Add your first game by clicking the button below."
         action={{
           style: 'success',
-          onClick: () => history.push(`${match.url}/new`),
+          onClick: () => history.push('${match.url}/new'),
           label: 'Create Your First Game',
         }}
       />}
