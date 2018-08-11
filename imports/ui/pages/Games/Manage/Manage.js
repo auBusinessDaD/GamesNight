@@ -10,6 +10,7 @@ import GamesCollection from '../../../../api/Games/Games';
 import { timeago, monthDayYearAtTime } from '../../../../modules/dates';
 import Loading from '../../../components/Loading/Loading';
 import BlankState from '../../../components/BlankState/BlankState';
+import SearchInput from '../../components/SearchInput/SearchInput';
 
 const StyledGames = styled.div`
   table tbody tr td {
@@ -89,6 +90,7 @@ const Games = ({
   <StyledGames>
     <div className="page-header clearfix">
       <h4 className="pull-left">Games</h4>
+      <SearchInput />
       <Link className="btn btn-success pull-right" to={`${match.url}/new`}>Add Game</Link>
     </div>
     {games.length ?
