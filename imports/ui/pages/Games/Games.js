@@ -70,7 +70,7 @@ const handleRemove = (gameId, gameField) => {
 
 const sortTable = (tableHeader) => {
 	let thisTable, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-	thisTable = $("#gameTable");
+	thisTable = document.getElementById("gameTable");
 	switching = true;
   
 	dir = "asc";
