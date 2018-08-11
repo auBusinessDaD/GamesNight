@@ -38,6 +38,7 @@ import NotFound from '../../pages/NotFound/NotFound';
 import Footer from '../../components/Footer/Footer';
 import Terms from '../../pages/Terms/Terms';
 import Privacy from '../../pages/Privacy/Privacy';
+import Wish from '../../pages/Wish/Wish';
 import ExamplePage from '../../pages/ExamplePage/ExamplePage';
 import VerifyEmailAlert from '../../components/VerifyEmailAlert/VerifyEmailAlert';
 import GDPRConsentModal from '../../components/GDPRConsentModal/GDPRConsentModal';
