@@ -40,7 +40,7 @@ const searchTable = (tableHeader) => {
 }
 
 const SearchInput = ({ placeholder }) => (
-  <StyledSearchInput className="SearchInput">
+  <StyledSearchInput className="SearchInput pull-right">
     <Icon iconStyle="solid" icon="search" />
     <input
       type="text"
