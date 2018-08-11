@@ -19,7 +19,7 @@ const StyledSearchInput = styled.div`
 `;
 
 const SearchInput = ({ placeholder, onKeyUp }) => (
-  <StyledSearchInput className="SearchInput">
+  <StyledSearchInput id="searchGame" className="SearchInput">
     <Icon iconStyle="solid" icon="search" />
     <input
       type="text"
