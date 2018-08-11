@@ -89,7 +89,7 @@ const Games = ({
             _id, title, rrp, edition, pubYear, playGame, ownsGame
           }) => (
             <tr key={_id}>
-              <td><span class="clickableText" onClick={() => history.push(`/games/${_id}`)}>{title}</span></td>
+              <td><span className="clickableText" onClick={() => history.push(`/games/${_id}`)}>{title}</span></td>
               <td>{edition}</td>
               <td>{pubYear}</td>
               <td>{rrp}</td>
