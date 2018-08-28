@@ -204,7 +204,7 @@ class GameEditor extends React.Component {
         <FormGroup>
           <ControlLabel>Kid Friendly</ControlLabel>
           <input
-            type="boolean-select"
+            type="boolean"
             className="form-control"
             name="kidFriendly"
             defaultValue={gam && gam.kidFriendly}
@@ -214,7 +214,7 @@ class GameEditor extends React.Component {
         <FormGroup>
           <ControlLabel>Expansion Available</ControlLabel>
           <input
-            type="boolean-select"
+            type="boolean"
             className="form-control"
             name="expAvail"
             defaultValue={gam && gam.expAvail}
@@ -224,7 +224,7 @@ class GameEditor extends React.Component {
         <FormGroup>
           <ControlLabel>Expansion</ControlLabel>
           <input
-            type="boolean-select"
+            type="boolean"
             className="form-control"
             name="expansion"
             defaultValue={gam && gam.expansion}
@@ -234,7 +234,7 @@ class GameEditor extends React.Component {
         <FormGroup>
           <ControlLabel>Standalone Expansion</ControlLabel>
           <input
-            type="boolean-select"
+            type="boolean"
             className="form-control"
             name="standalone"
             defaultValue={gam && gam.standalone}
