@@ -100,6 +100,11 @@ Games.schema = new SimpleSchema({
     label: 'The number of players that play this game.',
     optional: true,
   },
+  optimalPlayers: {
+    type: String,
+    label: 'The optimal number of players when playing this game.',
+    optional: true,
+  },
   playTime: {
     type: String,
     label: 'How long is the advised playing time for this game, in minutes.',
