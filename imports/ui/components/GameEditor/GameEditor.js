@@ -42,11 +42,16 @@ class GameEditor extends React.Component {
       edition: form.edition.value.trim(),
       pubYear: form.pubYear.value.trim(),
       players: form.players.value.trim(),
+      optimalPlayers: form.players.value.trim(),
       playTime: form.playTime.value.trim(),
       ageRange: form.ageRange.value.trim(),
       designers: form.designers.value.trim(),
       artists: form.artists.value.trim(),
       publisher: form.publisher.value.trim(),
+      kidFriendly: form.publisher.value.trim(),
+      expAvail: form.publisher.value.trim(),
+      expansion: form.publisher.value.trim(),
+      standalone: form.publisher.value.trim(),
     };
 
     if (existingGame) gam._id = existingGame;
@@ -196,6 +201,46 @@ class GameEditor extends React.Component {
             placeholder="Who was the publisher of this game/edition!"
           />
         </FormGroup>
+        <FormGroup>
+          <ControlLabel>Kid Friendly</ControlLabel>
+          <input
+            type="boolean-select"
+            className="form-control"
+            name="kidFriendly"
+            defaultValue={gam && gam.kidFriendly}
+            placeholder="Is this game child friendly?"
+          />
+        </FormGroup>
+        <FormGroup>
+          <ControlLabel>Expansion Available</ControlLabel>
+          <input
+            type="boolean-select"
+            className="form-control"
+            name="expAvail"
+            defaultValue={gam && gam.expAvail}
+            placeholder="Is there an expansion available?"
+          />
+        </FormGroup>
+        <FormGroup>
+          <ControlLabel>Expansion</ControlLabel>
+          <input
+            type="boolean-select"
+            className="form-control"
+            name="expansion"
+            defaultValue={gam && gam.expansion}
+            placeholder="Is this game an expansion of an existing game?"
+          />
+        </FormGroup>
+        <FormGroup>
+          <ControlLabel>Standalone Expansion</ControlLabel>
+          <input
+            type="boolean-select"
+            className="form-control"
+            name="standalone"
+            defaultValue={gam && gam.standalone}
+            placeholder="Is this game playable by itself? or does it need the base game"
+          />
+        </FormGroup>
         <Button type="submit" bsStyle="success">
           {gam && gam._id ? 'Save Changes' : 'Add Game'}
         </Button>
@@ -205,7 +250,7 @@ class GameEditor extends React.Component {
 }
 
 GameEditor.defaultProps = {
-  gam: { title: '', description: '', wishlist: '', owns: '', altTitle: '', rrp: '', edition: '', pubYear: '', players: '', playTime: '', ageRange: '', designers: '', artists: '', publisher: '' },
+  gam: { title: '', description: '', wishlist: '', owns: '', altTitle: '', rrp: '', edition: '', pubYear: '', players: '', optimalPlayers: '', playTime: '', ageRange: '', designers: '', artists: '', publisher: '', kidFriendly: '', expAvail: '', expansion: '', standalone: '' },
 };
 
 GameEditor.propTypes = {
