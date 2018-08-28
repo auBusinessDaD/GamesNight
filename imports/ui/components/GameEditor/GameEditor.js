@@ -137,6 +137,16 @@ class GameEditor extends React.Component {
           />
         </FormGroup>
         <FormGroup>
+          <ControlLabel>Optimal Number of Players</ControlLabel>
+          <input
+            type="text"
+            className="form-control"
+            name="optimalPlayers"
+            defaultValue={gam && gam.optimalPlayers}
+            placeholder="The optimal number of players when playing this game."
+          />
+        </FormGroup>
+        <FormGroup>
           <ControlLabel>Playing Time</ControlLabel>
           <input
             type="text"
