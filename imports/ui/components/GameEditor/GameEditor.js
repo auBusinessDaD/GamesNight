@@ -47,11 +47,7 @@ class GameEditor extends React.Component {
       ageRange: form.ageRange.value.trim(),
       designers: form.designers.value.trim(),
       artists: form.artists.value.trim(),
-      publisher: form.publisher.value.trim(),
-      kidFriendly: form.publisher.value.trim(),
-      expAvail: form.publisher.value.trim(),
-      expansion: form.publisher.value.trim(),
-      standalone: form.publisher.value.trim(),
+      publisher: form.publisher.value.trim()
     };
 
     if (existingGame) gam._id = existingGame;
@@ -204,7 +200,7 @@ class GameEditor extends React.Component {
         <FormGroup>
           <ControlLabel>Kid Friendly</ControlLabel>
           <input
-            type="boolean"
+            type="checkbox"
             className="form-control"
             name="kidFriendly"
             defaultValue={gam && gam.kidFriendly}
@@ -214,7 +210,7 @@ class GameEditor extends React.Component {
         <FormGroup>
           <ControlLabel>Expansion Available</ControlLabel>
           <input
-            type="boolean"
+            type="checkbox"
             className="form-control"
             name="expAvail"
             defaultValue={gam && gam.expAvail}
@@ -224,7 +220,7 @@ class GameEditor extends React.Component {
         <FormGroup>
           <ControlLabel>Expansion</ControlLabel>
           <input
-            type="boolean"
+            type="checkbox"
             className="form-control"
             name="expansion"
             defaultValue={gam && gam.expansion}
@@ -234,7 +230,7 @@ class GameEditor extends React.Component {
         <FormGroup>
           <ControlLabel>Standalone Expansion</ControlLabel>
           <input
-            type="boolean"
+            type="checkbox"
             className="form-control"
             name="standalone"
             defaultValue={gam && gam.standalone}
