@@ -36,16 +36,16 @@ Meteor.methods({
       edition: String,
       pubYear: String,
       players: String,
-      optimalPlayers: Number,
+      optimalPlayers: String,
       playTime: String,
       ageRange: String,
       designers: String,
       artists: String,
       publisher: String,
-      kidFriendly: Boolean,
-      expAvail: Boolean,
-      expansion: Boolean,
-      standalone: Boolean
+      kidFriendly: String,
+      expAvail: String,
+      expansion: String,
+      standalone: String
     });
     
     gam[ 'wantPlay' ] = new Array();
@@ -76,16 +76,16 @@ Meteor.methods({
       edition: String,
       pubYear: String,
       players: String,
-      optimalPlayers: Number,
+      optimalPlayers: String,
       playTime: String,
       ageRange: String,
       designers: String,
       artists: String,
       publisher: String,
-      kidFriendly: Boolean,
-      expAvail: Boolean,
-      expansion: Boolean,
-      standalone: Boolean
+      kidFriendly: String,
+      expAvail: String,
+      expansion: String,
+      standalone: String
     });
     
     //need to check if this user can edit this game!!
