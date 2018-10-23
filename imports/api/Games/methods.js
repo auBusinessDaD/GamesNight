@@ -36,11 +36,16 @@ Meteor.methods({
       edition: String,
       pubYear: String,
       players: String,
+      optimalPlayers: Number,
       playTime: String,
       ageRange: String,
       designers: String,
       artists: String,
       publisher: String,
+      kidFriendly: Boolean,
+      expAvail: Boolean,
+      expansion: Boolean,
+      standalone: Boolean
     });
     
     gam[ 'wantPlay' ] = new Array();
@@ -71,11 +76,16 @@ Meteor.methods({
       edition: String,
       pubYear: String,
       players: String,
+      optimalPlayers: Number,
       playTime: String,
       ageRange: String,
       designers: String,
       artists: String,
       publisher: String,
+      kidFriendly: Boolean,
+      expAvail: Boolean,
+      expansion: Boolean,
+      standalone: Boolean
     });
     
     //need to check if this user can edit this game!!
