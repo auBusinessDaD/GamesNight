@@ -42,10 +42,10 @@ Meteor.methods({
       designers: String,
       artists: String,
       publisher: String,
-      kidFriendly: String,
-      expAvail: String,
-      expansion: String,
-      standalone: String
+      kidFriendly: Boolean,
+      expAvail: Boolean,
+      expansion: Boolean,
+      standalone: Boolean
     });
     
     gam[ 'wantPlay' ] = new Array();
@@ -82,10 +82,10 @@ Meteor.methods({
       designers: String,
       artists: String,
       publisher: String,
-      kidFriendly: String,
-      expAvail: String,
-      expansion: String,
-      standalone: String
+      kidFriendly: Boolean,
+      expAvail: Boolean,
+      expansion: Boolean,
+      standalone: Boolean
     });
     
     //need to check if this user can edit this game!!
