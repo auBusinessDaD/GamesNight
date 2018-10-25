@@ -208,7 +208,7 @@ class GameEditor extends React.Component {
             className="form-control"
             name="kidFriendly"
             defaultValue={gam && gam.kidFriendly}
-            checked = {gam && gam.kidFriendly ? 'checked' : ''}
+            checked={gam && gam.kidFriendly ? 'checked' : ''}
           />
         </FormGroup>
         <FormGroup>
@@ -218,7 +218,7 @@ class GameEditor extends React.Component {
             className="form-control"
             name="expAvail"
             defaultValue={gam && gam.expAvail}
-            checked = {gam && gam.expAvail ? 'checked' : ''}
+            checked={gam && gam.expAvail ? 'checked' : ''}
           />
         </FormGroup>
         <FormGroup>
@@ -228,7 +228,7 @@ class GameEditor extends React.Component {
             className="form-control"
             name="expansion"
             defaultValue={gam && gam.expansion}
-            checked = {gam && gam.expansion ? 'checked' : ''}
+            checked={gam && gam.expansion ? 'checked' : ''}
           />
         </FormGroup>
         <FormGroup>
@@ -238,7 +238,7 @@ class GameEditor extends React.Component {
             className="form-control"
             name="standalone"
             defaultValue={gam && gam.standalone}
-            checked = {gam && gam.standalone ? 'checked' : ''}
+            checked={gam && gam.standalone ? 'checked' : ''}
           />
         </FormGroup>
         <Button type="submit" bsStyle="success">
