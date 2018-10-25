@@ -232,6 +232,7 @@ class GameEditor extends React.Component {
           />
         </FormGroup>
         <FormGroup>
+          <ControlLabel>Standalone Expansion</ControlLabel>
           <input
             type="checkbox"
             className="form-control"
@@ -239,7 +240,6 @@ class GameEditor extends React.Component {
             defaultValue={gam && gam.standalone}
             checked = {gam && gam.standalone ? 'checked' : ''}
           />
-          <label>Standalone Expansion</label>
         </FormGroup>
         <Button type="submit" bsStyle="success">
           {gam && gam._id ? 'Save Changes' : 'Add Game'}
