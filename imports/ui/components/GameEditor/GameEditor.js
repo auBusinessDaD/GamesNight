@@ -48,10 +48,10 @@ class GameEditor extends React.Component {
       designers: form.designers.value.trim(),
       artists: form.artists.value.trim(),
       publisher: form.publisher.value.trim(),
-      kidFriendly: (form.kidFriendly.is(':checked') == 'true'),
+      kidFriendly: $('[name="kidFriendly"]').is(':checked'),
       expAvail: $('[name="expAvail"]').is(':checked'),
-      expansion: form.expansion.is(':checked'),
-      standalone: (form.standalone.checked == 'true'),
+      expansion: $('[name="expansion"]').is(':checked'),
+      standalone: $('[name="standalone"]').is(':checked'),
     };
 
     if (existingGame) gam._id = existingGame;
