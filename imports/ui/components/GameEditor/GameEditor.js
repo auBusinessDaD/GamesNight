@@ -207,8 +207,6 @@ class GameEditor extends React.Component {
             type="checkbox"
             className="form-control"
             name="kidFriendly"
-            defaultValue={gam && gam.kidFriendly}
-            placeholder="Is this game child friendly?"
           />
         </FormGroup>
         <FormGroup>
@@ -217,8 +215,6 @@ class GameEditor extends React.Component {
             type="checkbox"
             className="form-control"
             name="expAvail"
-            defaultValue={gam && gam.expAvail}
-            placeholder="Is there an expansion available?"
           />
         </FormGroup>
         <FormGroup>
@@ -227,8 +223,6 @@ class GameEditor extends React.Component {
             type="checkbox"
             className="form-control"
             name="expansion"
-            defaultValue={gam && gam.expansion}
-            placeholder="Is this game an expansion of an existing game?"
           />
         </FormGroup>
         <FormGroup>
@@ -237,8 +231,6 @@ class GameEditor extends React.Component {
             type="checkbox"
             className="form-control"
             name="standalone"
-            defaultValue={gam && gam.standalone}
-            placeholder="Is this game playable by itself? or does it need the base game"
           />
         </FormGroup>
         <Button type="submit" bsStyle="success">
