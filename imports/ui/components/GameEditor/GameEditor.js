@@ -234,7 +234,8 @@ class GameEditor extends React.Component {
             type="checkbox"
             className="form-control"
             name="standalone"
-            {gam && gam.standalone ? 'checked' : ''}
+            defaultValue={gam && gam.standalone}
+            checked = {gam && gam.standalone ? 'checked' : ''}
           />
         </FormGroup>
         <Button type="submit" bsStyle="success">
