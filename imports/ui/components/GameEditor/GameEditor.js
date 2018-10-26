@@ -228,7 +228,7 @@ class GameEditor extends React.Component {
             className="form-control"
             name="expansion"
             defaultValue={gam && gam.expansion}
-            [ngModel]="gam.expansion"
+            ngModel
           />
         </FormGroup>
         <FormGroup>
