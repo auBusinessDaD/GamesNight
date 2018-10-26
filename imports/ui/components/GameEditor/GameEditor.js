@@ -48,7 +48,7 @@ class GameEditor extends React.Component {
       designers: form.designers.value.trim(),
       artists: form.artists.value.trim(),
       publisher: form.publisher.value.trim(),
-      kidFriendly: form.kidFriendly.value,
+      kidFriendly: $('[name="kidFriendly"]').is(':checked'),
       expAvail: $('[name="expAvail"]').is(':checked'),
       expansion: $('[name="expansion"]').is(':checked'),
       standalone: $('[name="standalone"]').is(':checked'),
@@ -228,7 +228,7 @@ class GameEditor extends React.Component {
             className="form-control"
             name="expansion"
             defaultValue={gam && gam.expansion}
-            checked={gam && gam.expansion ? '' : ''}
+            [ngModel]="gam.expansion"
           />
         </FormGroup>
         <FormGroup>
