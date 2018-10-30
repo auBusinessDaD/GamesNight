@@ -80,6 +80,15 @@ Games.schema = new SimpleSchema({
     type: String,
     regEx: SimpleSchema.RegEx.Id,
   },
+  loanedTo: {
+    type: Array,
+    label: 'People who have loaned this game to another user.',
+    optional: true,
+  },
+  'loanedTo.$': {
+    type: String,
+    regEx: SimpleSchema.RegEx.Id,
+  },
   rrp: {
     type: String,
     label: 'Recomended Retail Price for this game.',
