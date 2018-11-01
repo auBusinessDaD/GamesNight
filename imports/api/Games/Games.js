@@ -86,8 +86,7 @@ Games.schema = new SimpleSchema({
     optional: true,
   },
   'loanedTo.$': {
-    type: String,
-    regEx: SimpleSchema.RegEx.Id,
+    type: Array,
   },
   rrp: {
     type: String,
