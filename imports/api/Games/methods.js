@@ -51,6 +51,7 @@ Meteor.methods({
     gam[ 'wantPlay' ] = new Array();
     gam[ 'wishlist' ] = new Array();
     gam[ 'owns' ] = new Array();
+    gam[ 'loanedTo' ] = new Array();
     
     gam[ 'categories' ] = new Array();
     gam[ 'gameMech' ] = new Array();
@@ -98,7 +99,7 @@ Meteor.methods({
         return gameId;
       }
 
-      throw new Meteor.Error('403', 'Apologies - you eager beaver - but you\'re not allowed to edit this game.');
+      throw new Meteor.Error('403', 'Apologies - you eager beaver - you\'re not allowed to edit this game.');
     } catch (exception) {
       handleMethodException(exception);
     }
@@ -137,6 +138,39 @@ Meteor.methods({
       handleMethodException(exception);
     }
   },
+  'games.addLoan': function gamesAddField( gam ) {
+    check(gam, {
+      _id: String,
+      recipient: String,
+    });
+
+    try {
+      const gameId = gam._id;
+      
+      Games.update(gameId, { $push: { [gam.loanedTo]: [ this.userId, gam.recipient ] } });
+      return gameId;
+
+      throw new Meteor.Error('403', 'Apologies - we had some difficulties with your request.');
+    } catch (exception) {
+      handleMethodException(exception);
+    }
+  },
+  'games.removeLoan': function gamesRemoveField( gam ) {
+    check(gam, {
+      _id: String,
+    });
+
+    try {
+      const gameId = gam._id;
+      //JUST REMOVE ANY ARRAY ITEMS THAT HAVE THIS USER AS OWNER
+      Games.update(gameId, { $pull: { [gam.loanedTo]: this.userId } });
+      return gameId;
+
+      throw new Meteor.Error('403', 'Apologies - we had some difficulties with your request.');
+    } catch (exception) {
+      handleMethodException(exception);
+    }
+  },
   'games.remove': function gamesRemove(gameId) {
     check(gameId, String);
     
@@ -161,6 +195,8 @@ rateLimit({
     'games.update',
     'games.addFieldArray',
     'games.removeFieldArray',
+    'games.addLoan',
+    'games.removeLoan',
     'games.remove',
   ],
   limit: 5,
