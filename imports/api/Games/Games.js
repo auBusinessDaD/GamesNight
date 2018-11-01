@@ -88,6 +88,9 @@ Games.schema = new SimpleSchema({
   'loanedTo.$': {
     type: Array,
   },
+  'loanedTo.$.$': {
+    type: Array,
+  },
   rrp: {
     type: String,
     label: 'Recomended Retail Price for this game.',
