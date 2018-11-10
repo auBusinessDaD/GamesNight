@@ -20,6 +20,7 @@ twbs:bootstrap                # Front-end framework for designing websites and w
 fourseven:scss                # A professional grade CSS extension language
 fortawesome:fontawesome       # An easy to use icon set
 themeteorchef:bert            # A client side, multi-style alerts system
+natestrauser:select2          # Brings in Select2, a customizable select box with support for searching, tagging, remote data sets, infinite scrolling, and many other highly used options
 
 react-meteor-data             # 
 alanning:roles                # Attach permissions to a user
