@@ -359,8 +359,17 @@ const Games = ({
             </tr>
           ))}
         </tbody>
-      </Table>
-      <div id="modalPopup">
+      </Table> : <BlankState
+        icon={{ style: 'solid', symbol: 'file-alt' }}
+        title="You're plum out of games, friend!"
+        subtitle="Add some games to your collection below."
+        action={{
+          style: 'success',
+          onClick: () => history.push('/games'),
+          label: 'Find Some Games Here',
+        }}
+      />}
+    <div id="modalPopup">
         <div class="modal">
           <div class="title">Select a user to loan to...</div>
           <div class="closeModal">X</div>
@@ -377,16 +386,7 @@ const Games = ({
           </div>
           <div class="submitUser">Loan to <span id="selectedUser">...</span></div>
         </div>
-      </div> : <BlankState
-        icon={{ style: 'solid', symbol: 'file-alt' }}
-        title="You're plum out of games, friend!"
-        subtitle="Add some games to your collection below."
-        action={{
-          style: 'success',
-          onClick: () => history.push('/games'),
-          label: 'Find Some Games Here',
-        }}
-      />}
+      </div>
   </StyledGames>
 ) : <Loading />);
 
