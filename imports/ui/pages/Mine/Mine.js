@@ -38,6 +38,7 @@ const StyledGames = styled.div`
 	}
 	#modalPopup .modal {
 	  width: 450px;
+	  display: block;
 	  box-shadow: 0px 23px 30px -20px rgba(0, 0, 0, 0.4);
 	}
 	#modalPopup .modal .title {
@@ -94,6 +95,10 @@ const StyledGames = styled.div`
 
 const showModal = () => {
   $("#modalPopup").addClass( "showModal" );
+};
+
+const closeModal = () => {
+  $("#modalPopup").removeClass( "showModal" );
 };
 
 const handleAdd = (gameId, gameField) => {
