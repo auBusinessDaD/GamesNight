@@ -207,7 +207,7 @@ const StyledGames = styled.div`
 `;
 
 const showModal = () => {
-  
+  $(".overlay").addClass( "showModal" );
 };
 
 const handleAdd = (gameId, gameField) => {
