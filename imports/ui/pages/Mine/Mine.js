@@ -24,7 +24,192 @@ const StyledGames = styled.div`
   .sortableColumn {
     cursor: alias;
   }
+  
+  #modalPopup {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  right: 0;
+	  bottom: 0;
+	  background: rgba(0, 0, 0, 0.7);
+	  justify-content: center;
+	  align-items: center;
+	  display: none;
+	}
+	#modalPopup .modal {
+	  width: 450px;
+	  box-shadow: 0px 23px 30px -20px rgba(0, 0, 0, 0.4);
+	}
+	#modalPopup .modal .title {
+	  background: #778797;
+	  color: white;
+	  border-radius: 4px 0px 0px 0px;
+	  text-align: center;
+	  line-height: 48px;
+	  font-weight: 700;
+	  width: 80%;
+	  float: left;
+	}
+	#modalPopup .modal .closeModal {
+	  background: #C70000;
+	  color: white;
+	  border-radius: 0px 4px 0px 0px;
+	  text-align: center;
+	  line-height: 48px;
+	  font-weight: 700;
+	  width: 20%;
+	  float: left;
+	  cursor: pointer;
+	}
+	#modalPopup .modal .body {
+	  clear: both;
+	  background: white;
+	  line-height: 20px;
+	  display: flex;
+	  align-items: stretch;
+	}
+	#modalPopup .modal .body .content {
+	  padding: 30px;
+	}
+	#modalPopup .modal .body .content select {
+	  display: block;
+	  width: 390px;
+	}
+	#modalPopup .modal .submitUser {
+	  background: #ababab;
+	  color: white;
+	  border-radius: 0px 0px 4px 4px;
+	  text-align: center;
+	  line-height: 48px;
+	  font-weight: 700;
+	}
+	#modalPopup .modal .submitUser.modalSending {
+	  background: #004499;
+	  cursor: pointer;
+	}
+	#modalPopup.showModal {
+	  display: flex;
+	  -webkit-animation: fadeIn 300ms ease-in-out forwards;
+			  animation: fadeIn 300ms ease-in-out forwards;
+	}
+	#modalPopup.showModal .modal {
+	  -webkit-animation: modalAnim 500ms ease-in-out forwards;
+			  animation: modalAnim 500ms ease-in-out forwards;
+	}
+	#modalPopup.modalSending {
+	  -webkit-animation: fadeOut 300ms ease-in-out forwards;
+			  animation: fadeOut 300ms ease-in-out forwards;
+	}
+	#modalPopup.modalSending .modal {
+	  -webkit-animation: modalSend 500ms ease-in-out forwards;
+			  animation: modalSend 500ms ease-in-out forwards;
+	}
+
+	@-webkit-keyframes fadeIn {
+	  0% {
+		background-color: rgba(0, 0, 0, 0);
+	  }
+	  100% {
+		background-color: rgba(0, 0, 0, 0.3);
+	  }
+	}
+
+	@keyframes fadeIn {
+	  0% {
+		background-color: rgba(0, 0, 0, 0);
+	  }
+	  100% {
+		background-color: rgba(0, 0, 0, 0.3);
+	  }
+	}
+	@-webkit-keyframes fadeOut {
+	  0% {
+		background-color: rgba(0, 0, 0, 0.3);
+	  }
+	  100% {
+		background-color: rgba(0, 0, 0, 0);
+	  }
+	}
+	@keyframes fadeOut {
+	  0% {
+		background-color: rgba(0, 0, 0, 0.3);
+	  }
+	  100% {
+		background-color: rgba(0, 0, 0, 0);
+	  }
+	}
+	@-webkit-keyframes modalAnim {
+	  0% {
+		-webkit-transform: translateX(-200%) rotate(-90deg);
+				transform: translateX(-200%) rotate(-90deg);
+		opacity: 0;
+	  }
+	  60% {
+		-webkit-transform: translateX(8%) rotate(8deg);
+				transform: translateX(8%) rotate(8deg);
+	  }
+	  80% {
+		-webkit-transform: translateX(-4%) rotate(-4deg);
+				transform: translateX(-4%) rotate(-4deg);
+	  }
+	  100% {
+		-webkit-transform: translateX(0%);
+				transform: translateX(0%);
+	  }
+	}
+	@keyframes modalAnim {
+	  0% {
+		-webkit-transform: translateX(-200%) rotate(-90deg);
+				transform: translateX(-200%) rotate(-90deg);
+		opacity: 0;
+	  }
+	  60% {
+		-webkit-transform: translateX(8%) rotate(8deg);
+				transform: translateX(8%) rotate(8deg);
+	  }
+	  80% {
+		-webkit-transform: translateX(-4%) rotate(-4deg);
+				transform: translateX(-4%) rotate(-4deg);
+	  }
+	  100% {
+		-webkit-transform: translateX(0%);
+				transform: translateX(0%);
+	  }
+	}
+	@-webkit-keyframes modalSend {
+	  0% {
+		-webkit-transform: translateX(0%);
+				transform: translateX(0%);
+	  }
+	  70% {
+		-webkit-transform: translateY(-75%) scale(0.3, 0.3);
+				transform: translateY(-75%) scale(0.3, 0.3);
+	  }
+	  100% {
+		-webkit-transform: translateY(-200%) scale(0.3, 0.3) rotate(50deg);
+				transform: translateY(-200%) scale(0.3, 0.3) rotate(50deg);
+	  }
+	}
+	@keyframes modalSend {
+	  0% {
+		-webkit-transform: translateX(0%);
+				transform: translateX(0%);
+	  }
+	  70% {
+		-webkit-transform: translateY(-75%) scale(0.3, 0.3);
+				transform: translateY(-75%) scale(0.3, 0.3);
+	  }
+	  100% {
+		-webkit-transform: translateY(-200%) scale(0.3, 0.3) rotate(50deg);
+				transform: translateY(-200%) scale(0.3, 0.3) rotate(50deg);
+	  }
+	}
 `;
+
+const showModal = () => {
+  
+};
+
 const handleAdd = (gameId, gameField) => {
   let addItem = { _id: gameId, field: gameField };
   Meteor.call('games.addFieldArray', addItem, (error) => {
@@ -132,12 +317,14 @@ const Games = ({
             _id, title, playGame
           }) => (
             <tr key={_id}>
-              <td><span className="clickableText" onClick={() => history.push(`/games/${_id}`)}>{title}</span></td>
+              <td>
+                <span className="clickableText" onClick={() => history.push(`/games/${_id}`)}>{title}</span>
+              </td>
               <td>On Shelf OR Loaned to XXX</td>
               <td>
                 <Button
                   bsStyle="primary"
-                  onClick={() => history.push('/games/${_id}')}
+                  onClick={() => showModal()}
                   block
                 >
                   **Loan To**
@@ -172,7 +359,25 @@ const Games = ({
             </tr>
           ))}
         </tbody>
-      </Table> : <BlankState
+      </Table>
+      <div id="modalPopup">
+        <div class="modal">
+          <div class="title">Select a user to loan to...</div>
+          <div class="closeModal">X</div>
+          <div class="body">
+          <div class="content">
+             <select class="pplSelect">
+             <option disabled selected value> -- select a user -- </option>
+            <option value="asdfadfgfsh">Daniel Lewis</option>
+            <option value="dmndfjtrnsr">Frank Derptstrom</option>
+            <option value="ngsffgnsfjf">Prince Hairy</option>
+            <option value="geerveqrryu">Knighting Gaile</option>
+            </select>
+          </div>
+          </div>
+          <div class="submitUser">Loan to <span id="selectedUser">...</span></div>
+        </div>
+      </div> : <BlankState
         icon={{ style: 'solid', symbol: 'file-alt' }}
         title="You're plum out of games, friend!"
         subtitle="Add some games to your collection below."
