@@ -263,7 +263,7 @@ const Games = ({
     <div id="modalPopup">
         <div class="modal">
           <div class="title">Select a user to loan to...</div>
-          <div class="closeModal">X</div>
+          <div class="closeModal" onClick={() => closeModal()}>X</div>
           <div class="body">
           <div class="content">
              <select class="pplSelect">
