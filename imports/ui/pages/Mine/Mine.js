@@ -224,10 +224,10 @@ const checkSelect = () => {
 
 const sendModal = () => {
   if( $( ".pplSelect" ).val() ) {
-    $('.myModal').addClass('modalSending');
+    $('#modalPopup').addClass('modalSending');
     setTimeout(function(){
-      $('.myModal').removeClass('showModal');
-      $('.myModal').removeClass('modalSending');
+      $('#modalPopup').removeClass('showModal');
+      $('#modalPopup').removeClass('modalSending');
     }, 1000);
     //should we clear select field??
     //alert("Meteor Should Send this off");
