@@ -202,8 +202,8 @@ const StyledGames = styled.div`
 				transform: translateY(-150%) scale(0.3, 0.3);
 	  }
 	  100% {
-		-webkit-transform: translateY(-400%) scale(0.3, 0.3) rotate(50deg);
-				transform: translateY(-400%) scale(0.3, 0.3) rotate(50deg);
+		-webkit-transform: translateY(-300%) scale(0.3, 0.3) rotate(50deg);
+				transform: translateY(-300%) scale(0.3, 0.3) rotate(50deg);
 	  }
 	}
 `;
