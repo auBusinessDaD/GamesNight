@@ -184,12 +184,12 @@ const StyledGames = styled.div`
 				transform: translateX(0%);
 	  }
 	  70% {
-		-webkit-transform: translateY(-75%) scale(0.3, 0.3);
-				transform: translateY(-75%) scale(0.3, 0.3);
+		-webkit-transform: translateY(-150%) scale(0.3, 0.3);
+				transform: translateY(-150%) scale(0.3, 0.3);
 	  }
 	  100% {
-		-webkit-transform: translateY(-200%) scale(0.3, 0.3) rotate(50deg);
-				transform: translateY(-200%) scale(0.3, 0.3) rotate(50deg);
+		-webkit-transform: translateY(-400%) scale(0.3, 0.3) rotate(50deg);
+				transform: translateY(-400%) scale(0.3, 0.3) rotate(50deg);
 	  }
 	}
 	@keyframes modalSend {
@@ -198,12 +198,12 @@ const StyledGames = styled.div`
 				transform: translateX(0%);
 	  }
 	  70% {
-		-webkit-transform: translateY(-75%) scale(0.3, 0.3);
-				transform: translateY(-75%) scale(0.3, 0.3);
+		-webkit-transform: translateY(-150%) scale(0.3, 0.3);
+				transform: translateY(-150%) scale(0.3, 0.3);
 	  }
 	  100% {
-		-webkit-transform: translateY(-200%) scale(0.3, 0.3) rotate(50deg);
-				transform: translateY(-200%) scale(0.3, 0.3) rotate(50deg);
+		-webkit-transform: translateY(-400%) scale(0.3, 0.3) rotate(50deg);
+				transform: translateY(-400%) scale(0.3, 0.3) rotate(50deg);
 	  }
 	}
 `;
@@ -351,7 +351,7 @@ const Games = ({
                   onClick={() => showModal()}
                   block
                 >
-                  **Loan To**
+                  Loan To
                 </Button>
               </td>
               <td>
