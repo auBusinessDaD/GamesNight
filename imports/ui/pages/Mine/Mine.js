@@ -35,6 +35,7 @@ const StyledGames = styled.div`
 	  justify-content: center;
 	  align-items: center;
 	  display: none;
+	  z-index: 1000;
 	}
 	#modalPopup .myModal {
 	  width: 450px;
@@ -215,6 +216,24 @@ const closeModal = () => {
   $("#modalPopup").removeClass( "showModal" );
 };
 
+const checkSelect = () => {
+  $( ".submitUser" ).addClass( "modalSending" );
+  let textRep = $( ".pplSelect option:selected" ).text();
+  $( "#selectedUser" ).text( textRep );
+};
+
+const sendModal = () => {
+  if( $( ".pplSelect" ).val() ) {
+    $('.overlay').addClass('modalSending');
+    setTimeout(function(){
+      $('.overlay').removeClass('showModal');
+      $('.overlay').removeClass('modalSending');
+    }, 1000);
+    //should we clear select field??
+    //alert("Meteor Should Send this off");
+  }
+};
+
 const handleAdd = (gameId, gameField) => {
   let addItem = { _id: gameId, field: gameField };
   Meteor.call('games.addFieldArray', addItem, (error) => {
@@ -380,16 +399,16 @@ const Games = ({
           <div class="closeModal" onClick={() => closeModal()}>X</div>
           <div class="body">
           <div class="content">
-             <select class="pplSelect">
+            <select class="pplSelect" onchange={() => checkSelect()}>
              <option disabled selected value> -- select a user -- </option>
-            <option value="asdfadfgfsh">Daniel Lewis</option>
-            <option value="dmndfjtrnsr">Frank Derptstrom</option>
-            <option value="ngsffgnsfjf">Prince Hairy</option>
-            <option value="geerveqrryu">Knighting Gaile</option>
+             <option value="asdfadfgfsh">Daniel Lewis</option>
+             <option value="dmndfjtrnsr">Frank Derptstrom</option>
+             <option value="ngsffgnsfjf">Prince Hairy</option>
+             <option value="geerveqrryu">Knighting Gaile</option>
             </select>
           </div>
           </div>
-          <div class="submitUser">Loan to <span id="selectedUser">...</span></div>
+          <div class="submitUser" onClick={() => sendModal()}>Loan to <span id="selectedUser">...</span></div>
         </div>
       </div>
   </StyledGames>
