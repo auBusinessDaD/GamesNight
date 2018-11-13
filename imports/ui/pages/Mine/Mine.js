@@ -36,12 +36,12 @@ const StyledGames = styled.div`
 	  align-items: center;
 	  display: none;
 	}
-	#modalPopup .modal {
+	#modalPopup .myModal {
 	  width: 450px;
 	  display: block;
 	  box-shadow: 0px 23px 30px -20px rgba(0, 0, 0, 0.4);
 	}
-	#modalPopup .modal .title {
+	#modalPopup .myModal .title {
 	  background: #778797;
 	  color: white;
 	  border-radius: 4px 0px 0px 0px;
@@ -51,7 +51,7 @@ const StyledGames = styled.div`
 	  width: 80%;
 	  float: left;
 	}
-	#modalPopup .modal .closeModal {
+	#modalPopup .myModal .closeModal {
 	  background: #C70000;
 	  color: white;
 	  border-radius: 0px 4px 0px 0px;
@@ -62,21 +62,21 @@ const StyledGames = styled.div`
 	  float: left;
 	  cursor: pointer;
 	}
-	#modalPopup .modal .body {
+	#modalPopup .myModal .body {
 	  clear: both;
 	  background: white;
 	  line-height: 20px;
 	  display: flex;
 	  align-items: stretch;
 	}
-	#modalPopup .modal .body .content {
+	#modalPopup .myModal .body .content {
 	  padding: 30px;
 	}
-	#modalPopup .modal .body .content select {
+	#modalPopup .myModal .body .content select {
 	  display: block;
 	  width: 390px;
 	}
-	#modalPopup .modal .submitUser {
+	#modalPopup .myModal .submitUser {
 	  background: #ababab;
 	  color: white;
 	  border-radius: 0px 0px 4px 4px;
@@ -84,7 +84,7 @@ const StyledGames = styled.div`
 	  line-height: 48px;
 	  font-weight: 700;
 	}
-	#modalPopup .modal .submitUser.modalSending {
+	#modalPopup .myModal .submitUser.modalSending {
 	  background: #004499;
 	  cursor: pointer;
 	}
@@ -93,7 +93,7 @@ const StyledGames = styled.div`
 	  -webkit-animation: fadeIn 300ms ease-in-out forwards;
 			  animation: fadeIn 300ms ease-in-out forwards;
 	}
-	#modalPopup.showModal .modal {
+	#modalPopup.showModal .myModal {
 	  -webkit-animation: modalAnim 500ms ease-in-out forwards;
 			  animation: modalAnim 500ms ease-in-out forwards;
 	}
@@ -101,7 +101,7 @@ const StyledGames = styled.div`
 	  -webkit-animation: fadeOut 300ms ease-in-out forwards;
 			  animation: fadeOut 300ms ease-in-out forwards;
 	}
-	#modalPopup.modalSending .modal {
+	#modalPopup.modalSending .myModal {
 	  -webkit-animation: modalSend 500ms ease-in-out forwards;
 			  animation: modalSend 500ms ease-in-out forwards;
 	}
@@ -375,7 +375,7 @@ const Games = ({
         }}
       />}
     <div id="modalPopup">
-        <div class="modal">
+        <div class="myModal">
           <div class="title">Select a user to loan to...</div>
           <div class="closeModal" onClick={() => closeModal()}>X</div>
           <div class="body">
