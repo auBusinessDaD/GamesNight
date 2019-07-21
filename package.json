@@ -127,6 +127,6 @@
     "url": "git@auBusinessDaD:GamesNight/pup.git",
     "type": "git"
   },
-  "author": "Daniel lewis <daniel@pasme.com.au",
+  "author": "Daniel lewis <daniel@pasme.com.au>",
   "license": "MIT"
 }
