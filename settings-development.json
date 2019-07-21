@@ -10,13 +10,13 @@
     "MAIL_URL": "smtp://1dbc63a5a74526a8c2b1d93bd134f74c:67e6227f864504c711e673466ac58e6f@in-v3.mailjet.com:587",
     "OAuth": {
       "facebook": {
-        "enabled": false,
+        "enabled": true,
         "appId": "",
         "secret": "",
         "loginStyle": "popup"
       },
       "google": {
-        "enabled": false,
+        "enabled": true,
         "clientId": "",
         "secret": "",
         "loginStyle": "popup"
